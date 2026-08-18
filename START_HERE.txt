@@ -1,0 +1,7 @@
+RAFFI DIGITAL – STARTA HÄR
+
+1. Öppna OPEN_WEBSITE.html om du bara vill se resultatet direkt.
+2. Eller kör python3 start_preview.py för lokal förhandsvisning från frontend/dist.
+3. React-källan finns i frontend/src.
+4. FastAPI-backenden finns i backend/app.
+5. Kontaktformuläret är API-ready men kräver SMTP-konfiguration för riktig e-post.
