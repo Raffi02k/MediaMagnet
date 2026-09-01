@@ -292,7 +292,7 @@ main{min-height:60vh;padding-top:var(--header-offset)}
 .page-hero{padding:112px 0 92px}
 .page-hero-dark{background:var(--ink);color:#fff}
 .page-hero-blue{background:var(--blue);color:#fff}
-.narrow-hero{max-width:990px}
+.narrow-hero{max-width:990px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
 .narrow-hero h1{margin:16px 0 22px;font-size:clamp(4rem,8vw,8.2rem);line-height:.86;letter-spacing:-.078em;font-weight:950;text-wrap:balance}
 .narrow-hero p{max-width:720px;margin:0 0 28px;font-size:1.05rem;line-height:1.75;color:var(--muted)}
 .page-hero-dark .narrow-hero p,.page-hero-blue .narrow-hero p{color:rgba(255,255,255,.74)}
@@ -558,7 +558,14 @@ main{min-height:60vh;padding-top:var(--header-offset)}
   .mobile-panel-inner b{font-size:.9rem}
   .mobile-panel-cta{display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:22px;border-radius:999px;background:var(--ink);color:#fff;font-weight:900}
   .home-hero-grid,.service-tease-grid,.faq-grid,.problem-grid,.screen-service-grid,.founder-grid,.contact-page-grid,.case-hero-grid,.service-story-grid,.service-why-grid{grid-template-columns:1fr}
-  .hero-copy{text-align:center}.hero-statement{margin-inline:auto}.hero-buttons,.hero-checks{justify-content:center}
+  .home-hero-grid{display:flex;flex-direction:column;align-items:center}
+  .hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+  .problem-grid,.screen-service-grid,.founder-grid,.contact-page-grid,.case-hero-grid,.service-story-grid,.service-why-grid{justify-items:center}
+  .problem-grid>*,.screen-service-grid>*,.founder-grid>*,.contact-page-grid>*,.case-hero-grid>*,.service-story-grid>*,.service-why-grid>*{width:100%}
+  .screen-service-grid>div:first-child,.case-hero-grid>div:first-child,.service-why-grid>div:first-child,.service-story-grid .rabbit-section-heading,.founder-copy{text-align:center}
+  .hero-copy .kicker{justify-content:center;text-align:center}
+  .hero-copy h1{text-align:center}
+  .hero-statement{margin-inline:auto}.hero-buttons,.hero-checks{justify-content:center}
   .hero-mascot-wrap{min-height:420px}.hero-mascot{max-height:420px}.orbit-one{right:calc(50% - 220px)}.orbit-two{right:calc(50% - 170px)}.hero-magnet-card{right:12%;top:50px}
   .service-hero-shell{min-height:500px}.service-hero-copy{max-width:none}
   .faq-heading,.sticky-heading{position:static}
@@ -597,7 +604,7 @@ main{min-height:60vh;padding-top:var(--header-offset)}
   :root{--header-offset:70px}
   .site-header{--mobile-menu-offset:70px;height:70px}.site-header.is-solid{--mobile-menu-offset:64px;height:64px}
   .header-inner{min-height:100%}.brand img{width:38px;height:38px}.brand span{font-size:.92rem}.mobile-panel{top:70px;height:calc(100dvh - 70px)}
-  .home-hero{padding:38px 0 62px}.hero-copy{padding-top:20px}.hero-copy h1{font-size:clamp(4.05rem,19vw,6rem);margin-top:14px}.hero-statement{font-size:1.05rem}.hero-buttons{display:grid}.hero-buttons .button{width:100%}.hero-checks{display:grid;justify-content:start;text-align:left}
+  .home-hero{padding:38px 0 62px}.hero-copy{padding-top:20px}.hero-copy h1{max-width:100%;font-size:clamp(3.45rem,16vw,5.4rem);margin-top:14px}.hero-statement{max-width:26rem;font-size:1.05rem}.hero-buttons{display:grid;justify-items:center;width:100%}.hero-buttons .button{width:min(100%,320px)}.hero-checks{display:grid;justify-content:center;justify-items:center;text-align:center}
   .hero-mascot-wrap{min-height:310px}.hero-mascot{max-height:305px}.orbit-one{width:300px;height:300px;right:calc(50% - 150px);top:14px}.orbit-two{width:230px;height:230px;right:calc(50% - 115px);top:49px}.hero-magnet-card{display:none}
   .upgrade-heading{align-items:flex-start;flex-direction:column}.upgrade-stage{height:330px}.upgrade-browser{padding:8px}.upgrade-browser-bar{height:39px;font-size:.6rem}.compare-handle{width:42px;height:42px;border-width:5px}.compare-label{top:12px;font-size:.6rem}.label-before{left:12px}.label-after{right:12px}
   .trust-strip{padding-block:28px}.trust-track span{min-height:46px;padding-inline:17px;font-size:.76rem}
