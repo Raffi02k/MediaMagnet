@@ -211,7 +211,7 @@ export default function HomePage() {
         <div className="container service-tease-grid">
           <div>
             <span className="section-kicker light">Mer än bara en hemsida</span>
-            <h2>Jag bygger det som syns — och hjälper till med det runt omkring.</h2>
+            <h2>Jag bygger det som syns och hjälper till med det runt omkring.</h2>
           </div>
           <div className="service-tease-list">
             {services.map((service, index) => (

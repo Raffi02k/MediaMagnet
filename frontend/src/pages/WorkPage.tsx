@@ -46,8 +46,8 @@ export default function WorkPage() {
             <img src="/assets/menu-nahrayn-mockup.png" alt="AL Nahrayn menyboards i restaurangmiljö" />
             <img src="/assets/menu-nahrayn-01.png" alt="AL Nahrayn menyboard 1" />
             <img src="/assets/menu-nahrayn-02.png" alt="AL Nahrayn menyboard 2" />
-            <img src="/assets/menu-birria-01.png" alt="Birria Seoul menyboard 1" />
-            <img src="/assets/menu-birria-02.png" alt="Birria Seoul menyboard 2" />
+            <img src="/assets/menu-birria-new1.png" alt="Birria Seoul menyboard 1" />
+            <img src="/assets/menu-birria-new2.png" alt="Birria Seoul menyboard 2" />
           </div>
         </div>
       </section>

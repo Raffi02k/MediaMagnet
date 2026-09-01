@@ -12,6 +12,7 @@ export function Header() {
   const location = useLocation();
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuOpen = open && !isClosing;
+  const headerSolid = scrolled && !open && !isClosing;
 
   function closeMobileMenu() {
     if ((!open && !isClosing) || isClosing) return;
@@ -72,7 +73,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`site-header${scrolled ? ' is-solid' : ''}`}>
+    <header className={`site-header${headerSolid ? ' is-solid' : ''}${open || isClosing ? ' menu-open' : ''}`}>
       <div className="container header-inner">
         <Link
           to="/"

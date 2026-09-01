@@ -220,8 +220,8 @@ export const services = [
     showcaseEntries: [
       { kind: 'image', image: '/assets/menu-nahrayn-mockup.png', alt: 'AL Nahrayn menyboards i restaurangmiljo', label: 'Menyboard', title: 'AL Nahrayn i restaurangmiljo med tydlig layout for ratter och priser.' },
       { kind: 'image', image: '/assets/menu-nahrayn-01.png', alt: 'AL Nahrayn menyboard', label: 'Menyboard', title: 'Mork premium-kansla med tydlig hierarki i menyn.' },
-      { kind: 'image', image: '/assets/menu-birria-01.png', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Fargstark board med fokus pa produkter, bilder och snabb lasbarhet.' },
-      { kind: 'image', image: '/assets/menu-birria-02.png', alt: 'Birria Seoul menyboard detalj', label: 'Menyboard', title: 'Ytterligare vy som visar kampanjer, priser och menystruktur.' }
+      { kind: 'image', image: '/assets/menu-birria-new1.png', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Fargstark board med fokus pa produkter, bilder och snabb lasbarhet.' },
+      { kind: 'image', image: '/assets/menu-birria-new2.png', alt: 'Birria Seoul menyboard detalj', label: 'Menyboard', title: 'Ytterligare vy som visar kampanjer, priser och menystruktur.' }
     ]
   },
   {
