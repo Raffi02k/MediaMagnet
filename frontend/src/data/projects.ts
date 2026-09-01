@@ -1,102 +1,75 @@
-export type ProjectTone = 'paint' | 'data' | 'future';
+export type ProjectTone = 'red' | 'gold' | 'blue' | 'green';
 
 export type Project = {
   slug: string;
-  title: string;
-  kicker: string;
+  name: string;
+  domain: string;
+  category: string;
+  city: string;
   summary: string;
-  tags: string[];
   url: string;
-  live: boolean;
   tone: ProjectTone;
-  caseEyebrow: string;
-  caseDescription: string;
-  caseFacts: Array<{
-    label: string;
-    value: string;
-  }>;
-  primaryCta: {
-    label: string;
-    href: string;
-    external?: boolean;
-  };
-  secondaryCta?: {
-    label: string;
-    href: string;
-    external?: boolean;
-  };
+  tags: string[];
+  challenge: string;
+  solution: string;
+  deliverables: string[];
 };
 
 export const projects: Project[] = [
   {
+    slug: 'birria-seoul',
+    name: 'Birria Seoul',
+    domain: 'birria-seoul-eight.vercel.app',
+    category: 'Restaurang',
+    city: 'Göteborg',
+    summary: 'En modern street-food-sajt som låter maten ta plats och gör meny, galleri och kontakt enkla att hitta.',
+    url: 'https://birria-seoul-eight.vercel.app',
+    tone: 'red',
+    tags: ['Webbdesign', 'Restaurang', 'Mobil UX'],
+    challenge: 'Restaurangen behövde en digital upplevelse som kändes lika energisk och matdriven som konceptet i lokalen.',
+    solution: 'Jag byggde en visuellt stark hemsida med stora matbilder, tydlig menystruktur och enkla vägar vidare till kontakt och beställning.',
+    deliverables: ['Ny webbdesign', 'Menystruktur', 'Mobilanpassning', 'Galleri och CTA-flöden']
+  },
+  {
+    slug: 'al-nahrayn-fisk',
+    name: 'AL Nahrayn Fisk',
+    domain: 'al-nahrayn-gold.vercel.app',
+    category: 'Restaurang',
+    city: 'Göteborg',
+    summary: 'Premium restaurangwebb med fokus på masgouf, grillkänsla och en tydligare irakisk identitet.',
+    url: 'https://al-nahrayn-gold.vercel.app',
+    tone: 'gold',
+    tags: ['Webbdesign', 'Menyboards', 'Varumärke'],
+    challenge: 'Företaget behövde ett mer premium och sammanhållet visuellt uttryck som bättre speglade maten och restaurangupplevelsen.',
+    solution: 'Jag byggde en mörk, matdriven webb och tog även fram digitala menyboards som kan användas direkt på skärmar i restaurangen.',
+    deliverables: ['Ny hemsida', 'Premium visuell riktning', 'Digitala menyboards', 'Mobilanpassning']
+  },
+  {
+    slug: 'vaxjo-eltjanst',
+    name: 'Växjö Eltjänst',
+    domain: 'vaxjo-eltjanst-view.vercel.app',
+    category: 'Elektriker',
+    city: 'Växjö',
+    summary: 'Redesign från en enklare äldre sajt till en modern tjänsteföretagssida med tydligare struktur och kontaktvägar.',
+    url: 'https://vaxjo-eltjanst-view.vercel.app',
+    tone: 'blue',
+    tags: ['Redesign', 'Lokalt företag', 'SEO-grund'],
+    challenge: 'Den äldre hemsidan visade inte företagets tjänster och kvalitet lika tydligt som den kunde och gav ett svagare första intryck.',
+    solution: 'Jag tog fram en ny, tydligare struktur med modern design, separata tjänster och starkare CTA:er för offert och kontakt.',
+    deliverables: ['Redesign', 'Tjänstesidor', 'Kontaktflöden', 'SEO-vänlig struktur']
+  },
+  {
     slug: 'penselverket',
-    title: 'Penselverket',
-    kicker: 'Local business · 2026',
-    summary:
-      'En komplett digital start för ett lokalt måleriföretag: hemsida, offertflöde, mobil UX och en struktur för Google, hosting och löpande digital närvaro.',
-    tags: ['React', 'TypeScript', 'FastAPI', 'Local SEO', 'Digital presence'],
-    url: 'https://penselverket.edgeone.dev',
-    live: true,
-    tone: 'paint',
-    caseEyebrow: 'CASE STUDY · LIVE WEBSITE',
-    caseDescription:
-      'En komplett digital lansering för ett nytt måleriföretag i Trollhättan — från varumärkeskänsla och hemsida till offertformulär, hosting, domän, Google Företagsprofil och struktur för kundrecensioner.',
-    caseFacts: [
-      { label: 'Roll', value: 'UX/UI, utveckling, SEO & lansering' },
-      { label: 'Teknikstack', value: 'React, TypeScript, Python, FastAPI' },
-      { label: 'Leverans', value: 'Webb, offertflöde, Google Business' },
-      { label: 'Status', value: 'Live & aktiv kundplattform' }
-    ],
-    primaryCta: {
-      label: 'Öppna live sajt ↗',
-      href: 'https://penselverket.edgeone.dev',
-      external: true
-    },
-    secondaryCta: {
-      label: 'Bygg något liknande ↗',
-      href: '/contact'
-    }
-  },
-  {
-    slug: 'laddinsikt',
-    title: 'Laddinsikt',
-    kicker: 'B2B product concept · 2026',
-    summary:
-      'Ett datadrivet B2B-koncept för laddinfrastruktur där rå data förädlas till opportunities, business cases, leads, pipeline och alerts.',
-    tags: ['Product UX', 'React', 'Python', 'Data', 'Sales intelligence'],
-    url: '',
-    live: false,
-    tone: 'data',
-    caseEyebrow: 'CASE STUDY · B2B CONCEPT',
-    caseDescription:
-      'En sales-intelligence-plattform framtagen för aktörer inom laddinfrastruktur. Konceptet samlar signaler, opportunities och affärscases i ett responsivt systemgränssnitt för säljteam och beslutstagare.',
-    caseFacts: [
-      { label: 'Fokus', value: 'B2B System UX & Datavisualisering' },
-      { label: 'Teknik', value: 'React, Python, Data Dashboard' },
-      { label: 'Funktioner', value: 'Opportunity scoring & pipeline' },
-      { label: 'Typ', value: 'Systemkoncept & arkitektur' }
-    ],
-    primaryCta: {
-      label: 'Discuss similar system ↗',
-      href: '/contact'
-    }
-  },
-  {
-    slug: 'next-project',
-    title: 'Nästa case',
-    kicker: 'Open slot',
-    summary:
-      'Portfolion är byggd för att växa. Nästa kundprojekt kan läggas till som ett nytt case med preview, live-länk, teknik och resultat.',
-    tags: ['Your brand', 'New project', 'Coming next'],
-    url: '/contact',
-    live: false,
-    tone: 'future',
-    caseEyebrow: 'NEXT CASE',
-    caseDescription: 'Portfolion är byggd för att växa. Nästa projekt kan läggas till här.',
-    caseFacts: [],
-    primaryCta: {
-      label: 'Starta projekt ↗',
-      href: '/contact'
-    }
+    name: 'Penselverket',
+    domain: 'peselverket.vercel.app',
+    category: 'Måleri',
+    city: 'Västra Götaland',
+    summary: 'En komplett digital grund för ett måleriföretag med tjänster, projekt, offertflöde och lokal synlighet i fokus.',
+    url: 'https://peselverket.vercel.app',
+    tone: 'green',
+    tags: ['Webbdesign', 'Offertflöde', 'Local SEO'],
+    challenge: 'Företaget behövde en professionell digital närvaro där nya kunder snabbt förstår tjänsterna och enkelt kan skicka en förfrågan.',
+    solution: 'Jag byggde en multipage-sajt med tydliga tjänster, projekt, kontakt och en struktur som är lätt att bygga vidare på med Google och reviews.',
+    deliverables: ['Ny hemsida', 'Offertflöde', 'Tjänstesidor', 'Lokal SEO-grund']
   }
 ];

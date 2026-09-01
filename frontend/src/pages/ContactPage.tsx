@@ -1,45 +1,32 @@
 import { ContactForm } from '../components/ContactForm';
 import { PageMeta } from '../components/PageMeta';
-import { contactInfo } from '../content/siteContent';
+import { site } from '../content/siteContent';
 
 export default function ContactPage() {
   return (
     <>
-      <PageMeta
-        title="Kontakt | Raffi Digital"
-        description="Kontakta Raffi Digital för nytt webbprojekt eller konsultation."
-        bodyClassName="page-contact page-agency"
-      />
-      <section className="subhero">
-        <div className="glow glow-blue" />
-        <div className="container">
-          <span className="eyebrow">Contact</span>
-          <div className="page-title-line">
-            <div>
-              <h1>Starta ditt projekt.</h1>
-              <p>Berätta kort om ditt företag, vad du behöver hjälp med eller ställ en fråga så återkommer jag inom kort.</p>
-            </div>
-            <div className="number">05</div>
-          </div>
+      <PageMeta title="Kontakt" description="Boka ett första samtal med MediaMagnet om hemsida, redesign, Google, reviews eller digitala menyboards." />
+      <section className="page-hero page-hero-dark contact-hero">
+        <div className="container narrow-hero">
+          <span className="section-kicker light">Starta projekt</span>
+          <h1>Berätta vad du vill förbättra.</h1>
+          <p>Du behöver inte veta exakt vilken teknik du behöver. Berätta om företaget, nuläget och vad du vill få ut av hemsidan.</p>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container contact-layout">
-          <div className="contact-card">
-            <span className="eyebrow">Direktkontakt</span>
-            <h2>Låt oss prata om ditt nästa steg.</h2>
-            <p>Oavsett om du behöver en helt ny webbplats, hjälp med formulär &amp; system eller struktur runt domän och Google Företagsprofil kan vi ta ett första samtal.</p>
-            <div style={{ marginTop: 30 }} className="footer-contact-meta">
-              <a href={`mailto:${contactInfo.email}`}>✉ {contactInfo.email}</a>
-              <a href={`tel:${contactInfo.phoneHref}`}>☎ {contactInfo.phoneLabel}</a>
-              <span>📍 {contactInfo.location}</span>
+      <section className="section section-white">
+        <div className="container contact-page-grid">
+          <div className="contact-info-card">
+            <span className="section-kicker">Direktkontakt</span>
+            <h2>Ett kort samtal räcker för att börja.</h2>
+            <p>Jag kan hjälpa med ny hemsida, redesign, Google-synlighet, reviews, hosting eller digitala menyboards.</p>
+            <div className="contact-links">
+              <a href={`mailto:${site.email}`}><small>E-post</small><strong>{site.email}</strong><span>↗</span></a>
+              <a href={`tel:${site.phone.replace(/\s+/g, '')}`}><small>Telefon</small><strong>{site.phone}</strong><span>↗</span></a>
+              <a href={site.instagram} target="_blank" rel="noreferrer"><small>Instagram</small><strong>@mediamagnetse</strong><span>↗</span></a>
             </div>
           </div>
-
-          <div className="contact-card">
-            <ContactForm />
-          </div>
+          <div className="form-card"><ContactForm /></div>
         </div>
       </section>
     </>

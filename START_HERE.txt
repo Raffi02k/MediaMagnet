@@ -1,7 +1,15 @@
-RAFFI DIGITAL – STARTA HÄR
+MEDIAMAGNET — NEW SITERABBITS-INSPIRED BUILD
 
-1. Öppna OPEN_WEBSITE.html om du bara vill se resultatet direkt.
-2. Eller kör python3 start_preview.py för lokal förhandsvisning från frontend/dist.
-3. React-källan finns i frontend/src.
-4. FastAPI-backenden finns i backend/app.
-5. Kontaktformuläret är API-ready men kräver SMTP-konfiguration för riktig e-post.
+1. Open the project in VS Code.
+2. In terminal: cd frontend
+3. Run: npm install
+4. Run: npm run dev
+5. For Vercel: deploy the project root. vercel.json is already configured.
+
+Main files to edit:
+- frontend/src/content/siteContent.ts  -> contact, services, FAQ, process
+- frontend/src/data/projects.ts        -> customer projects
+- frontend/src/styles/global.css       -> full design system
+- frontend/public/assets/              -> logo, portrait, mascot, menu boards
+
+This version is a full rebuild and does not use the previous MediaMagnet page structure/design.

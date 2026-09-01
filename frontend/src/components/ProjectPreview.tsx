@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import type { Project } from '../data/projects';
 
 type ProjectPreviewProps = {
@@ -5,45 +6,37 @@ type ProjectPreviewProps = {
   compact?: boolean;
 };
 
-export function ProjectPreview({ project, compact = false }: ProjectPreviewProps) {
-  if (project.tone === 'paint') {
-    return (
-      <div className="work-preview paint">
-        <div className="browser">
-          <div className="browser-bar">
-            <div className="browser-dots"><span /><span /><span /></div>
-            <div className="browser-url">penselverket.edgeone.dev</div>
-          </div>
-          <div className="browser-screen">
-            <img src="/assets/penselverket-hero.webp" alt="Preview av Penselverket-projektet" />
-          </div>
-        </div>
-        <div className="preview-live"><i /> LIVE WEBSITE</div>
-      </div>
-    );
-  }
+function screenshotUrl(url: string, width = 1400) {
+  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=${width}`;
+}
 
-  if (project.tone === 'data') {
-    return (
-      <div className="work-preview">
-        <div className="data-preview" style={compact ? { width: '100%', height: 380 } : undefined}>
-          <div className="data-grid">
-            <div className="data-kpi"><strong>91</strong><span>Opportunity score</span></div>
-            <div className="data-kpi"><strong>24</strong><span>Signals</span></div>
-            <div className="data-kpi"><strong>7</strong><span>Leads</span></div>
-          </div>
-          <div className="data-chart" style={compact ? { height: 230 } : undefined} />
-        </div>
-      </div>
-    );
-  }
+export function ProjectPreview({ project, compact = false }: ProjectPreviewProps) {
+  const [failed, setFailed] = useState(false);
+  const shot = useMemo(() => screenshotUrl(project.url, compact ? 1100 : 1500), [project.url, compact]);
 
   return (
-    <div className="work-preview">
-      <div className="future-preview">
-        <div>
-          <strong>+1</strong>
-          <span>Nytt projekt kan läggas till här</span>
+    <div className={`project-preview tone-${project.tone}${compact ? ' compact' : ''}`}>
+      <div className="browser-shell">
+        <div className="browser-bar">
+          <div className="browser-dots"><i /><i /><i /></div>
+          <span>{project.domain}</span>
+          <b>LIVE</b>
+        </div>
+        <div className="browser-screen">
+          {!failed ? (
+            <img src={shot} alt={`Förhandsvisning av ${project.name}`} loading="lazy" onError={() => setFailed(true)} />
+          ) : (
+            <div className="browser-fallback">
+              <small>{project.category} · {project.city}</small>
+              <strong>{project.name}</strong>
+              <span>{project.domain}</span>
+            </div>
+          )}
+          <div className="browser-shade" />
+          <div className="browser-caption">
+            <span>{project.category}</span>
+            <strong>{project.name}</strong>
+          </div>
         </div>
       </div>
     </div>

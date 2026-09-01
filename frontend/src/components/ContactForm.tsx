@@ -1,115 +1,119 @@
 import { FormEvent, useState } from 'react';
 
-type StatusState = {
-  kind: 'idle' | 'success' | 'error';
+type State = {
+  kind: 'idle' | 'loading' | 'success' | 'error';
   message: string;
 };
 
-const initialStatus: StatusState = {
-  kind: 'idle',
-  message: ''
-};
-
 export function ContactForm() {
-  const [status, setStatus] = useState<StatusState>(initialStatus);
+  const [state, setState] = useState<State>({ kind: 'idle', message: '' });
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const formData = new FormData(form);
+    const data = new FormData(form);
+
     const payload = {
-      name: String(formData.get('name') ?? ''),
-      company: '',
-      email: String(formData.get('email') ?? ''),
-      phone: String(formData.get('phone') ?? ''),
-      projectType: String(formData.get('service') ?? ''),
-      message: String(formData.get('message') ?? ''),
-      consent: formData.get('consent') === 'on',
-      website: String(formData.get('website') ?? '')
+      name: String(data.get('name') ?? ''),
+      email: String(data.get('email') ?? ''),
+      phone: String(data.get('phone') ?? ''),
+      company: String(data.get('company') ?? ''),
+      service: String(data.get('service') ?? ''),
+      websiteUrl: String(data.get('websiteUrl') ?? ''),
+      message: String(data.get('message') ?? ''),
+      consent: data.get('consent') === 'on',
+      website: String(data.get('website') ?? '')
     };
 
-    setStatus({ kind: 'success', message: 'Skickar...' });
+    setState({ kind: 'loading', message: 'Skickar din förfrågan...' });
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      const body = await response.json().catch(() => ({})) as { message?: string; detail?: string; status?: string };
+      if (!response.ok) throw new Error(body.detail || 'Kunde inte skicka just nu.');
 
-      const body = (await response.json().catch(() => ({}))) as {
-        detail?: string;
-        message?: string;
-        status?: string;
-      };
-
-      if (!response.ok) {
-        throw new Error(body.detail || 'Kunde inte skicka just nu.');
-      }
-
-      if (body.status === 'preview') {
-        setStatus({
-          kind: 'success',
-          message: 'Demoläge: formuläret är validerat men riktig e-post är inte konfigurerad ännu.'
-        });
-      } else {
-        setStatus({ kind: 'success', message: body.message || 'Tack! Din förfrågan är mottagen.' });
-      }
-
+      setState({
+        kind: 'success',
+        message: body.status === 'preview'
+          ? 'Formuläret är i preview-läge. Koppla SMTP-miljövariabler i produktion för riktig e-post.'
+          : body.message || 'Tack! Jag hör av mig så snart jag kan.'
+      });
       form.reset();
     } catch {
-      setStatus({
-        kind: 'success',
-        message:
-          'Preview-läge: formuläret fungerar i designen. När Python/FastAPI-backenden är live kan förfrågan skickas till din inkorg.'
+      setState({
+        kind: 'error',
+        message: 'Formuläret kunde inte nå servern. Du kan också kontakta mig direkt via e-post eller telefon.'
       });
     }
-  };
-
-  const statusClassName = status.kind === 'idle' ? 'status' : `status show${status.kind === 'error' ? ' error' : ''}`;
+  }
 
   return (
-    <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
-      <div className="form-grid">
-        <div>
-          <label style={{ fontSize: '.7rem', color: 'var(--muted)', display: 'block', marginBottom: 6 }}>NAMN *</label>
-          <input className="input" type="text" name="name" required placeholder="Ditt eller företagets namn" />
-        </div>
-        <div>
-          <label style={{ fontSize: '.7rem', color: 'var(--muted)', display: 'block', marginBottom: 6 }}>E-POST *</label>
-          <input className="input" type="email" name="email" required placeholder="namn@foretag.se" />
-        </div>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-row">
+        <label>
+          <span>Namn *</span>
+          <input name="name" required placeholder="Ditt namn" />
+        </label>
+        <label>
+          <span>E-post *</span>
+          <input name="email" type="email" required placeholder="namn@foretag.se" />
+        </label>
       </div>
-      <div className="form-grid">
-        <div>
-          <label style={{ fontSize: '.7rem', color: 'var(--muted)', display: 'block', marginBottom: 6 }}>TELEFON</label>
-          <input className="input" type="tel" name="phone" placeholder="070-000 00 00" />
-        </div>
-        <div>
-          <label style={{ fontSize: '.7rem', color: 'var(--muted)', display: 'block', marginBottom: 6 }}>VAD GÄLLER DET?</label>
-          <select className="select" name="service" defaultValue="Ny hemsida">
-            <option value="Ny hemsida">Ny hemsida</option>
-            <option value="Webbsystem / Formulär">Webbsystem / Formulär</option>
-            <option value="Google & Digital närvaro">Google & Digital närvaro</option>
-            <option value="Annat">Annat</option>
+
+      <div className="form-row">
+        <label>
+          <span>Företag</span>
+          <input name="company" placeholder="Företagsnamn" />
+        </label>
+        <label>
+          <span>Telefon</span>
+          <input name="phone" type="tel" placeholder="070-000 00 00" />
+        </label>
+      </div>
+
+      <div className="form-row">
+        <label>
+          <span>Vad vill du ha hjälp med?</span>
+          <select name="service" defaultValue="Ny hemsida">
+            <option>Ny hemsida</option>
+            <option>Redesign av nuvarande hemsida</option>
+            <option>Google & lokal SEO</option>
+            <option>Reviews & Google Business</option>
+            <option>Digitala menyboards</option>
+            <option>Hosting & löpande hjälp</option>
+            <option>Annat</option>
           </select>
-        </div>
+        </label>
+        <label>
+          <span>Nuvarande hemsida</span>
+          <input name="websiteUrl" placeholder="https://..." />
+        </label>
       </div>
-      <div>
-        <label style={{ fontSize: '.7rem', color: 'var(--muted)', display: 'block', marginBottom: 6 }}>MEDDELANDE *</label>
-        <textarea className="textarea" name="message" required placeholder="Beskriv kort vad du vill ha hjälp med..." />
-      </div>
-      <div className="honeypot" aria-hidden="true">
-        <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-      </div>
-      <div className="consent">
-        <input type="checkbox" name="consent" id="consent" required />
-        <label htmlFor="consent">Jag godkänner att Raffi Digital sparar mina uppgifter för att besvara min förfrågan.</label>
-      </div>
-      <button className="btn btn-primary" type="submit" style={{ width: '100%' }}>Skicka förfrågan ↗</button>
-      <div id="form-status" className={statusClassName}>{status.message}</div>
+
+      <label>
+        <span>Berätta kort om projektet *</span>
+        <textarea name="message" required minLength={15} placeholder="Vad vill du förbättra och vad ska hemsidan hjälpa företaget med?" />
+      </label>
+
+      <label className="honeypot" aria-hidden="true">
+        Website
+        <input name="website" tabIndex={-1} autoComplete="off" />
+      </label>
+
+      <label className="consent-row">
+        <input name="consent" type="checkbox" required />
+        <span>Jag godkänner att MediaMagnet använder uppgifterna för att besvara min förfrågan.</span>
+      </label>
+
+      <button className="button button-dark submit-button" type="submit" disabled={state.kind === 'loading'}>
+        {state.kind === 'loading' ? 'Skickar...' : 'Skicka förfrågan ↗'}
+      </button>
+
+      {state.kind !== 'idle' && <div className={`form-status ${state.kind}`}>{state.message}</div>}
     </form>
   );
 }

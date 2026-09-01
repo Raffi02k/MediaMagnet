@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
+import { PageMeta } from '../components/PageMeta';
 
-export function NotFoundPage() {
+export default function NotFoundPage() {
   return (
-    <section className="section">
+    <section className="not-found section-white">
+      <PageMeta title="Sidan hittades inte" description="Sidan kunde inte hittas." />
       <div className="container">
-        <span className="eyebrow">404</span>
-        <h1>Sidan finns inte.</h1>
-        <p className="hero-lead">Länken kan vara gammal eller felstavad.</p>
-        <div style={{ marginTop: 24 }}>
-          <Link className="btn btn-primary" to="/">Till startsidan ↗</Link>
-        </div>
+        <span>404</span>
+        <h1>Den sidan finns inte.</h1>
+        <Link className="button button-dark" to="/">Till startsidan ↗</Link>
       </div>
     </section>
   );

@@ -1,95 +1,186 @@
+import type { MouseEvent as ReactMouseEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { Link, NavLink } from 'react-router-dom';
-import { announcementText, navigationItems } from '../content/siteContent';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { navigation, serviceLinks } from '../content/siteContent';
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const headerRef = useRef<HTMLElement | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const location = useLocation();
+  const servicesRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuOpen = open && !isClosing;
+
+  function closeMobileMenu() {
+    if ((!open && !isClosing) || isClosing) return;
+
+    setIsClosing(true);
+    window.setTimeout(() => {
+      setOpen(false);
+      setIsClosing(false);
+    }, 280);
+  }
+
+  function handleSamePageClick(event: ReactMouseEvent, to: string) {
+    setServicesOpen(false);
+    closeMobileMenu();
+
+    if (location.pathname !== to) return;
+
+    event.preventDefault();
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
 
   useEffect(() => {
-    const root = document.documentElement;
-    const syncTop = () => {
-      if (headerRef.current) {
-        root.style.setProperty('--mobile-menu-top', `${Math.max(0, Math.round(headerRef.current.getBoundingClientRect().bottom))}px`);
-      }
-    };
-    const unlock = () => {
-      document.body.classList.remove('menu-open');
-      root.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    };
-    const onResize = () => {
-      if (window.innerWidth > 1050) {
-        setOpen(false);
-      } else if (open) {
-        syncTop();
-      }
-    };
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
+    setOpen(false);
+    setIsClosing(false);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
+  }, [location.pathname]);
 
-    if (open) {
-      syncTop();
-      document.body.classList.add('menu-open');
-      root.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    } else {
-      unlock();
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 24);
     }
 
-    window.addEventListener('resize', onResize, { passive: true });
-    document.addEventListener('keydown', onKey);
-    return () => {
-      window.removeEventListener('resize', onResize);
-      document.removeEventListener('keydown', onKey);
-      unlock();
-    };
-  }, [open]);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
-  const close = () => setOpen(false);
-  const mobileMenu = (
-    <div className={`mobile-menu${open ? ' open' : ''}`}>
-      {navigationItems.map(item => (
-        <NavLink key={item.to} onClick={close} to={item.to}>{item.label}</NavLink>
-      ))}
-    </div>
-  );
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open || isClosing ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isClosing, open]);
+
+  useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!servicesRef.current?.contains(event.target as Node)) setServicesOpen(false);
+    }
+
+    document.addEventListener('mousedown', handlePointerDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+    };
+  }, []);
 
   return (
-    <>
-      <div className="announcement">{announcementText}</div>
-      <header className="site-header" ref={headerRef}>
-        <div className="container nav">
-          <Link className="profile-brand" to="/">
-            <img className="avatar" src="/assets/raffi-portrait.jpeg" alt="Raffi" />
-            <span className="profile-brand-text">
-              <strong>Raffi Digital</strong>
-              <span>Systemutvecklare &amp; webbdesigner</span>
-            </span>
-          </Link>
-          <nav className="nav-links">
-            {navigationItems.map(item => (
-              <NavLink key={item.to} to={item.to}>{item.label}</NavLink>
-            ))}
-          </nav>
-          <div className="nav-actions">
-            <div className="available-badge">
-              <span className="dot" /> 1 retainer-plats ledig
+    <header className={`site-header${scrolled ? ' is-solid' : ''}`}>
+      <div className="container header-inner">
+        <Link
+          to="/"
+          className="brand"
+          aria-label="MediaMagnet startsida"
+          onClick={event => handleSamePageClick(event, '/')}
+        >
+          <img src="/assets/mediamagnet-mark.png" alt="" />
+          <span>MediaMagnet</span>
+        </Link>
+
+        <nav className="desktop-nav" aria-label="Huvudnavigation">
+          {navigation.map(item => item.to === '/services' ? (
+            <div
+              key={item.to}
+              ref={servicesRef}
+              className={`desktop-nav-group${servicesOpen ? ' open' : ''}`}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                type="button"
+                className="desktop-nav-parent"
+                aria-expanded={servicesOpen}
+                aria-haspopup="menu"
+                onClick={() => setServicesOpen(value => !value)}
+              >
+                <span>{item.label}</span>
+                <b>+</b>
+              </button>
+              <div className="desktop-subnav" role="menu">
+                {serviceLinks.map(service => (
+                  <Link key={service.to} to={service.to} role="menuitem" onClick={event => handleSamePageClick(event, service.to)}>{service.label}</Link>
+                ))}
+              </div>
             </div>
-            <Link className="btn btn-primary" to="/contact">Starta projekt ↗</Link>
-            <button className="menu-toggle" aria-label={open ? 'Stäng meny' : 'Öppna meny'} aria-expanded={open} onClick={() => setOpen(value => !value)}>
-              <span className="menu-lines"><i /></span>
-            </button>
-          </div>
+          ) : (
+            <NavLink key={item.to} to={item.to} end={item.to === '/'} onClick={event => handleSamePageClick(event, item.to)}>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="header-actions">
+          <Link className="header-cta" to="/contact" onClick={event => handleSamePageClick(event, '/contact')}>Starta projekt <span>↗</span></Link>
+          <button
+            type="button"
+            className={`menu-button${mobileMenuOpen ? ' open' : ''}`}
+            aria-label={mobileMenuOpen ? 'Stäng meny' : 'Öppna meny'}
+            aria-expanded={mobileMenuOpen}
+            onClick={() => {
+              if (mobileMenuOpen) {
+                closeMobileMenu();
+                return;
+              }
+
+              setOpen(true);
+              setIsClosing(false);
+            }}
+          >
+            <span />
+            <span />
+          </button>
         </div>
-      </header>
-      {typeof document !== 'undefined' ? createPortal(mobileMenu, document.body) : null}
-    </>
+      </div>
+
+      <div
+        className={`mobile-panel${open ? ' open' : ''}${isClosing ? ' closing' : ''}`}
+        onClick={event => {
+          if (event.target === event.currentTarget) closeMobileMenu();
+        }}
+      >
+        <div className="container mobile-panel-inner" onClick={event => event.stopPropagation()}>
+          {navigation.map((item, index) => (
+            item.to === '/services' ? (
+              <div key={item.to} className="mobile-nav-group">
+                <button
+                  type="button"
+                  className={`mobile-nav-parent${mobileServicesOpen ? ' open' : ''}`}
+                  aria-expanded={mobileServicesOpen}
+                  aria-controls="mobile-services-subnav"
+                  onClick={() => setMobileServicesOpen(value => !value)}
+                >
+                  <small>{String(index + 1).padStart(2, '0')}</small>
+                  <span>{item.label}</span>
+                  <b>{mobileServicesOpen ? 'x' : '+'}</b>
+                </button>
+                <div
+                  id="mobile-services-subnav"
+                  className={`mobile-subnav${mobileServicesOpen ? ' open' : ''}`}
+                  aria-hidden={!mobileServicesOpen}
+                >
+                  <Link to={item.to} onClick={event => handleSamePageClick(event, item.to)}>Alla tjänster</Link>
+                  {serviceLinks.map(service => (
+                    <Link key={service.to} to={service.to} onClick={event => handleSamePageClick(event, service.to)}>{service.label}</Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NavLink key={item.to} to={item.to} end={item.to === '/'} onClick={event => handleSamePageClick(event, item.to)}>
+                <small>{String(index + 1).padStart(2, '0')}</small>
+                <span>{item.label}</span>
+                <b>↗</b>
+              </NavLink>
+            )
+          ))}
+          <Link className="mobile-panel-cta" to="/contact" onClick={event => handleSamePageClick(event, '/contact')}>Boka ett gratis första samtal ↗</Link>
+        </div>
+      </div>
+    </header>
   );
 }

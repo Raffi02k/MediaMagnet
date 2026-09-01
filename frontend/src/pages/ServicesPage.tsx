@@ -1,56 +1,78 @@
+import { Link } from 'react-router-dom';
 import { PageMeta } from '../components/PageMeta';
+import { services } from '../content/siteContent';
+
+const problems = [
+  'Du har ingen tydlig hemsida och blir svårare att hitta online.',
+  'Din nuvarande sida känns gammal och speglar inte kvaliteten i företaget.',
+  'Besökare landar på sidan men förstår inte snabbt vad de ska göra.',
+  'Tjänsterna är otydliga och kontaktvägen kräver för många steg.',
+  'Google, reviews och hemsidan jobbar inte tillsammans.'
+];
 
 export default function ServicesPage() {
   return (
     <>
-      <PageMeta
-        title="Tjänster | Raffi Digital"
-        description="Raffi Digital bygger webbplatser, system och digital närvaro för företag."
-        bodyClassName="page-services page-agency"
-      />
-      <section className="subhero">
-        <div className="glow glow-blue" />
+      <PageMeta title="Tjänster" description="Webbdesign, redesign, Google, lokal SEO, reviews, digitala menyboards och löpande hjälp från MediaMagnet." />
+
+      <section className="page-hero page-hero-dark services-page-hero">
+        <div className="container narrow-hero">
+          <span className="section-kicker light">Tjänster</span>
+          <h1>Din digitala närvaro ska göra mer än att bara existera.</h1>
+          <p>Jag hjälper företag bygga en tydligare väg från första intryck till kontakt, offert eller beställning.</p>
+          <Link className="button button-white button-large" to="/contact">Boka ett gratis första samtal ↗</Link>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="container problem-grid">
+          <div className="rabbit-section-heading sticky-heading">
+            <span className="section-kicker">Problemet</span>
+            <h2>En svag hemsida kan kosta förtroende innan kunden ens ringer.</h2>
+          </div>
+          <div className="problem-list">
+            {problems.map((problem, index) => (
+              <article key={problem}>
+                <span>{index + 1}</span>
+                <p>{problem}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section services-solution">
         <div className="container">
-          <span className="eyebrow">Services</span>
-          <div className="page-title-line">
-            <div>
-              <h1>Build. Run. Grow.</h1>
-              <p>Jag bygger hemsidan och hjälper till med det som gör att den fungerar professionellt efteråt — från kontaktflöden till Google, hosting och löpande förbättring.</p>
-            </div>
-            <div className="number">01</div>
+          <div className="rabbit-section-heading">
+            <span className="section-kicker light">MediaMagnet-lösningen</span>
+            <h2>Jag bygger. Jag förbättrar. Du kan fokusera på företaget.</h2>
+            <p>Du kan börja med en ny hemsida och sedan bygga vidare när behovet finns.</p>
+          </div>
+          <div className="services-grid-new">
+            {services.map((service, index) => (
+              <article id={service.id} key={service.id} className="service-detail-card">
+                <span className="service-index">0{index + 1}</span>
+                <h3>{service.title}</h3>
+                <p>{service.short}</p>
+                <ul>{service.bullets.map(item => <li key={item}>✓ {item}</li>)}</ul>
+                <Link className="service-card-link" to={`/services/${service.slug}`}>Läs mer ↗</Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container content-grid">
-          <aside className="sticky-aside"><span className="eyebrow">BUILD</span><h3>Webb &amp; system</h3><p>För företag som behöver en modern, snabb och tydlig webbplats som går att bygga vidare på.</p></aside>
+      <section className="section section-white screen-service-block" id="menu-boards">
+        <div className="container screen-service-grid">
           <div>
-            <div className="content-block"><h2>Web design &amp; development</h2><p>Responsiva multi-page-webbplatser med tydlig hierarki, konverteringsvägar och ett gränssnitt som känns genomarbetat på både mobil och desktop.</p><div className="stack-cloud"><span>React</span><span>TypeScript</span><span>Vite / Node</span><span>JavaScript</span><span>Responsive UX</span></div></div>
-            <div className="content-block"><h2>Backend &amp; kontaktflöden</h2><p>När sidan behöver mer än statisk frontend bygger jag ett enkelt API-lager, validering, spam-skydd och kontaktflöden som kan kopplas till e-post eller andra tjänster.</p><div className="stack-cloud"><span>Python</span><span>FastAPI</span><span>REST API</span><span>SMTP / email</span><span>Forms</span></div></div>
-            <div className="content-block"><h2>Integrationer</h2><p>Projektet kan förberedas för CRM, externa API:er, databaser, automationer och andra system — men jag försöker alltid börja med den enklaste lösningen som skapar verklig nytta.</p></div>
+            <span className="section-kicker">Digitala skärmar</span>
+            <h2>För restaurang och butik kan designen fortsätta inne i lokalen.</h2>
+            <p>Jag tar även fram visuella menyboards i 16:9-format som kan användas på TV-skärmar för att visa rätter, priser, kampanjer och beställningsinformation.</p>
+            <Link className="button button-dark" to="/work">Se exempel ↗</Link>
           </div>
-        </div>
-      </section>
-
-      <section className="section alt">
-        <div className="container content-grid">
-          <aside className="sticky-aside"><span className="eyebrow">RUN</span><h3>Drift &amp; ägarskap</h3><p>Kunden ska inte fastna i teknik eller tappa kontroll över sina konton.</p></aside>
-          <div>
-            <div className="content-block"><h2>Domän, DNS &amp; hosting</h2><p>Jag hjälper kunden sätta upp rätt ägarskap, DNS, SSL, hosting, backup och miljöstruktur så att lanseringen inte blir ett svart hål av inloggningar.</p></div>
-            <div className="content-block"><h2>Företagsmejl &amp; formulär</h2><p>Kontakt- och offertförfrågningar kan gå direkt till företagets vanliga inkorg. Reply-To kan sättas till besökarens adress så kunden svarar precis som på ett vanligt mejl.</p></div>
-            <div className="content-block"><h2>Underhåll</h2><p>Backup, uppdateringar, tillgänglighet, mindre innehållsändringar och vidareutveckling kan paketeras som en löpande tjänst när projektet behöver det.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container content-grid">
-          <aside className="sticky-aside"><span className="eyebrow">GROW</span><h3>Digital närvaro</h3><p>Hemsidan blir starkare när resten av företagets digitala närvaro hänger ihop med den.</p></aside>
-          <div>
-            <div className="content-block"><h2>Google Företagsprofil</h2><p>Struktur för företagsuppgifter, Maps, tjänster, bilder och en enkel process för att be riktiga kunder om recensioner.</p></div>
-            <div className="content-block"><h2>Search Console &amp; lokal SEO</h2><p>Indexering, sökfraser, lokal relevans, projektsidor och teknisk grund för att kunna förstå hur webbplatsen hittas.</p></div>
-            <div className="content-block"><h2>Social presence</h2><p>Webbplats, Google och sociala kanaler ska berätta samma historia. Jag kan hjälpa till med struktur, innehållspelare och hur genomförda kundjobb kan återanvändas som trovärdigt innehåll.</p></div>
+          <div className="screen-stack">
+            <img src="/assets/menu-birria-01.png" alt="Birria Seoul digital menyboard" />
+            <img src="/assets/menu-nahrayn-01.png" alt="AL Nahrayn digital menyboard" />
           </div>
         </div>
       </section>

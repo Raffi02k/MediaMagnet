@@ -1,39 +1,58 @@
-# MediaMagnet
+# MediaMagnet — SiteRabbits-inspired rebuild
 
-Min personliga portfolio byggd för att visa webbdesign, systemutveckling och digital närvaro i en modern, mörk och premium-inspirerad presentation.
+A completely new MediaMagnet portfolio/site built from scratch in React + TypeScript + Vite, with Python/FastAPI for the contact flow.
 
-Projektet är refaktorerat till en riktig React + TypeScript-arkitektur där varje sida nu är byggd som riktiga komponenter och page-filer, i stället för att ladda gammal statisk HTML.
+## Design direction
+The page flow is inspired by the reference SiteRabbits experience:
+- strong hero + single primary CTA
+- interactive website upgrade / before-after section
+- trusted client marquee
+- three-step process
+- horizontally moving work showcase
+- FAQ accordion
+- strong final CTA
+- simple About and Work pages
 
-## Vad projektet innehåller
+All copy, branding, client projects, imagery and contact information are MediaMagnet-specific.
 
-- startsida med hero, erfarenhet, tjänster, utvalda case och CTA
-- tjänstesida för `Build`, `Run` och `Grow`
-- worksida med strukturerad projektdata
-- case-sidor för `Penselverket` och `Laddinsikt`
-- about-sida med profil, filosofi och arbetssätt
-- kontaktsida med formulär mot FastAPI-backend
+## Structure
 
-## Tech stack
+```text
+MediaMagnet/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ContactForm.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   ├── PageMeta.tsx
+│   │   │   ├── ProjectCard.tsx
+│   │   │   ├── ProjectPreview.tsx
+│   │   │   └── ScrollToTop.tsx
+│   │   ├── content/siteContent.ts
+│   │   ├── data/projects.ts
+│   │   ├── pages/
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── ServicesPage.tsx
+│   │   │   ├── WorkPage.tsx
+│   │   │   ├── ProcessPage.tsx
+│   │   │   ├── AboutPage.tsx
+│   │   │   ├── ContactPage.tsx
+│   │   │   ├── ProjectDetailPage.tsx
+│   │   │   └── NotFoundPage.tsx
+│   │   ├── styles/global.css
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
+├── backend/app/main.py
+├── api/index.py
+└── vercel.json
+```
 
-- React
-- TypeScript
-- Vite
-- React Router
-- Python
-- FastAPI
-
-## Projektstruktur
-
-- `frontend/src/pages` innehåller alla riktiga React-sidor
-- `frontend/src/components` innehåller återanvändbara UI-komponenter
-- `frontend/src/data/projects.ts` innehåller portfolio-casen
-- `frontend/src/content/siteContent.ts` innehåller gemensamt innehåll
-- `frontend/src/styles/global.css` innehåller den visuella designen
-- `backend/app/main.py` innehåller API och servering av byggd frontend
-
-## Lokal utveckling
-
-### Frontend
+## Run locally
 
 ```bash
 cd frontend
@@ -41,62 +60,21 @@ npm install
 npm run dev
 ```
 
-Frontend kör då på `http://localhost:5173`.
-
-### Backend
+Build:
 
 ```bash
-cd ..
-python3 -m uvicorn backend.app.main:app --reload
-```
-
-Backend kör då på `http://localhost:8000`.
-
-## Produktion lokalt
-
-Bygg frontend:
-
-```bash
-cd frontend
 npm run build
 ```
 
-Starta sedan FastAPI från projektroten:
+Backend locally:
 
 ```bash
-python3 -m uvicorn backend.app.main:app --reload
+pip install -r backend/requirements.txt
+uvicorn backend.app.main:app --reload
 ```
 
-Öppna sedan `http://localhost:8000`.
+## Contact form
+Without SMTP variables the backend returns a safe preview response. For real email delivery, configure the variables shown in `backend/.env.example` in Vercel.
 
-## Portfolio-case
-
-### Penselverket
-
-Live site:
-
-`https://penselverket.edgeone.dev`
-
-### Laddinsikt
-
-Ett konceptcase för sales intelligence och laddinfrastruktur med fokus på data, dashboard-UX och B2B-systemtänk.
-
-## Kontaktformulär
-
-Kontaktformuläret postar till:
-
-`POST /api/contact`
-
-För att aktivera riktig e-post, kopiera och fyll i:
-
-`backend/.env.example`
-
-Utan SMTP-konfiguration kör formuläret i preview-läge med tydligt svar tillbaka till användaren.
-
-## Snabb preview
-
-Det finns också en portabel previewfil:
-
-`OPEN_WEBSITE.html`
-
-Den är praktisk om du snabbt vill visa portfolion utan att starta hela utvecklingsmiljön.
+## Live project previews
+Project cards use public screenshot thumbnails of the live client URLs. If that service cannot load, the component automatically shows a branded fallback card. Project detail pages also provide a direct live-site button.

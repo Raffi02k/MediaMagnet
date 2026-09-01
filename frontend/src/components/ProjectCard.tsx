@@ -4,33 +4,25 @@ import { ProjectPreview } from './ProjectPreview';
 
 type ProjectCardProps = {
   project: Project;
-  index: number;
+  compact?: boolean;
 };
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const projectHref = project.slug === 'next-project' ? '/contact' : `/work/${project.slug}`;
-
+export function ProjectCard({ project, compact = false }: ProjectCardProps) {
   return (
-    <article className={`project-row${project.tone === 'future' ? ' future' : ''}`}>
-      <ProjectPreview project={project} />
-      <div className="work-copy">
+    <article className={`project-card${compact ? ' compact' : ''}`}>
+      <ProjectPreview project={project} compact={compact} />
+      <div className="project-card-copy">
         <div>
-          <span className="index">CASE {String(index + 1).padStart(2, '0')} · {project.kicker}</span>
-          <h3>{project.title}</h3>
+          <span className="project-meta">{project.category} · {project.city}</span>
+          <h3>{project.name}</h3>
           <p>{project.summary}</p>
-          <div className="chip-row">
-            {project.tags.map(tag => <span className="chip" key={tag}>{tag}</span>)}
-          </div>
         </div>
-        <div className="work-actions">
-          <Link className="btn btn-primary" to={projectHref}>
-            {project.slug === 'next-project' ? 'Starta nästa projekt' : 'Öppna case'} ↗
-          </Link>
-          {project.url.startsWith('http') ? (
-            <a className="btn btn-ghost" href={project.url} target="_blank" rel="noreferrer">
-              Live site ↗
-            </a>
-          ) : null}
+        <div className="project-tags">
+          {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+        </div>
+        <div className="project-actions">
+          <Link className="button button-dark" to={`/work/${project.slug}`}>Se case ↗</Link>
+          <a className="button button-light" href={project.url} target="_blank" rel="noreferrer">Live site ↗</a>
         </div>
       </div>
     </article>

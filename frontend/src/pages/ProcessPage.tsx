@@ -1,35 +1,51 @@
+import type { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
 import { PageMeta } from '../components/PageMeta';
+import { processSteps } from '../content/siteContent';
 
 export default function ProcessPage() {
   return (
     <>
-      <PageMeta
-        title="Arbetssätt & Process | Raffi Digital"
-        description="Så här arbetar Raffi Digital från idé till lansering och tillväxt."
-        bodyClassName="page-process page-agency"
-      />
-      <section className="subhero">
-        <div className="glow glow-blue" />
-        <div className="container">
-          <span className="eyebrow">Process</span>
-          <div className="page-title-line">
-            <div>
-              <h1>En tydlig väg framåt.</h1>
-              <p>Ett webbprojekt blir bäst när kunden hela tiden vet vad som händer och vad nästa steg är. Här är strukturen jag jobbar efter.</p>
+      <PageMeta title="Process" description="Så arbetar MediaMagnet från första samtal till design, utveckling, launch och fortsatt förbättring." />
+      <section
+        className="page-hero page-backdrop-hero"
+        style={{ '--page-hero-image': 'url(/assets/processbild.jpg)' } as CSSProperties}
+      >
+        <div className="container page-hero-shell">
+          <div className="page-hero-copy">
+            <span className="section-kicker light">Process</span>
+            <h1>En tydlig process fran start till launch.</h1>
+            <p>Du vet vad som händer, vad jag behöver och vad nästa steg är.</p>
+            <div className="page-hero-points">
+              <span>Tydliga steg</span>
+              <span>Feedback under vägen</span>
+              <span>Launch utan strul</span>
             </div>
-            <div className="number">03</div>
+            <div className="hero-buttons">
+              <Link className="button button-white" to="/contact">Starta projekt ↗</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="workflow" style={{ borderRight: '1px solid var(--line)' }}>
-            <div className="workflow-step"><strong>01</strong><h3>Förstå &amp; Planera</h3><p>Vi går igenom affären, tjänsterna, kunderna och konkurrenterna. Vi sätter en rimlig omfattning och bestämmer vad som ska finnas med till launch.</p></div>
-            <div className="workflow-step"><strong>02</strong><h3>Design &amp; Frontend</h3><p>Vi bygger gränssnittet i kod, sätter färger, typografi, komponenter och testar hur det fungerar på mobil och dator.</p></div>
-            <div className="workflow-step"><strong>03</strong><h3>Backend &amp; Drift</h3><p>Vi sätter upp kontaktformulär, mejlflöden, SSL, domän, DNS och hosting så att all teknik ligger på rätt ställe.</p></div>
-            <div className="workflow-step"><strong>04</strong><h3>Lansera &amp; Växa</h3><p>Vi lanserar sidan, sätter upp Google Företagsprofil och Search Console samt planerar hur recensioner och innehåll kan hållas levande.</p></div>
-          </div>
+      <section className="section section-white">
+        <div className="container process-big-grid">
+          {processSteps.map(step => (
+            <article key={step.number}>
+              <span>{step.number}</span>
+              <h2>{step.title}</h2>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section process-details">
+        <div className="container process-detail-grid">
+          <article><span>DISCOVERY</span><h3>Vad ska sidan hjälpa till med?</h3><p>Tjänster, målgrupp, geografiskt område, nuvarande sida, konkurrenter och viktigaste CTA.</p></article>
+          <article><span>BUILD</span><h3>Design + kod + innehåll.</h3><p>React, TypeScript och Vite i frontend. FastAPI när formulär eller andra backendfunktioner behövs.</p></article>
+          <article><span>LAUNCH</span><h3>Test innan den går live.</h3><p>Mobil, desktop, länkar, formulär, domän, SSL och grundläggande metadata kontrolleras före launch.</p></article>
+          <article><span>GROW</span><h3>Fortsätt efter hemsidan.</h3><p>Search Console, Google Företagsprofil, reviews, nya sidor och löpande förbättringar när det ger nytta.</p></article>
         </div>
       </section>
     </>

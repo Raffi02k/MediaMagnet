@@ -1,43 +1,45 @@
-import { Link } from 'react-router-dom';
-import { contactInfo } from '../content/siteContent';
+import { Link, useLocation } from 'react-router-dom';
+import { navigation, site } from '../content/siteContent';
 
 export function Footer() {
-  const year = new Date().getFullYear();
+  const location = useLocation();
 
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div>
-            <div className="footer-label">Raffi Digital</div>
-            <h2>Webb som är byggd<br />för nästa steg.</h2>
-          </div>
-          <div>
-            <div className="footer-label">Utforska</div>
-            <div className="footer-nav">
-              <Link to="/services">Tjänster</Link>
-              <Link to="/work">Work</Link>
-              <Link to="/process">Process</Link>
-              <Link to="/about">Om mig</Link>
-            </div>
-          </div>
-          <div>
-            <div className="footer-label">Kontakt</div>
-            <div className="footer-nav">
-              <div className="footer-contact-meta">
-                <span className="contact-name">{contactInfo.company}</span>
-                <a href={`mailto:${contactInfo.email}`}>✉ {contactInfo.email}</a>
-                <a href={`tel:${contactInfo.phoneHref}`}>☎ {contactInfo.phoneLabel}</a>
-              </div>
-              <Link to="/contact">Starta ett projekt ↗</Link>
-              <a href="https://penselverket.edgeone.dev" target="_blank" rel="noreferrer">Penselverket live ↗</a>
-            </div>
-          </div>
+    <footer className="site-footer">
+      <div className="container footer-top">
+        <div className="footer-brand">
+          <Link
+            to="/"
+            className="brand footer-brand-logo"
+            onClick={event => {
+              if (location.pathname !== '/') return;
+              event.preventDefault();
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }}
+          >
+            <img src="/assets/mediamagnet-mark.png" alt="" />
+            <span>MediaMagnet</span>
+          </Link>
+          <p>Hemsidor och digital närvaro som gör det lättare för företag att bli hittade, förstådda och valda.</p>
         </div>
-        <div className="copyright">
-          <span>© {year} Raffi Digital</span>
-          <span>React · TypeScript · Node/Vite · Python/FastAPI · Modern UX/UI</span>
+
+        <div className="footer-nav-col">
+          <span>Navigation</span>
+          {navigation.map(item => <Link key={item.to} to={item.to}>{item.label}</Link>)}
         </div>
+
+        <div className="footer-nav-col">
+          <span>Kontakt</span>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`tel:${site.phone.replace(/\s+/g, '')}`}>{site.phone}</a>
+          <a href={site.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
+          <p>{site.location}</p>
+        </div>
+      </div>
+
+      <div className="container footer-line">
+        <span>© {new Date().getFullYear()} MediaMagnet</span>
+        <span>React · TypeScript · Vite · FastAPI</span>
       </div>
     </footer>
   );
