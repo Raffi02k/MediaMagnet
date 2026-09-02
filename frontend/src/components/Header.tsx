@@ -1,4 +1,4 @@
-import type { MouseEvent as ReactMouseEvent } from 'react';
+import type { FocusEvent as ReactFocusEvent, MouseEvent as ReactMouseEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navigation, serviceLinks } from '../content/siteContent';
@@ -32,6 +32,11 @@ export function Header() {
 
     event.preventDefault();
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
+  function handleDesktopServicesBlur(event: ReactFocusEvent<HTMLDivElement>) {
+    if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+    setServicesOpen(false);
   }
 
   useEffect(() => {
@@ -90,7 +95,10 @@ export function Header() {
               key={item.to}
               ref={servicesRef}
               className={`desktop-nav-group${servicesOpen ? ' open' : ''}`}
+              onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
+              onFocusCapture={() => setServicesOpen(true)}
+              onBlurCapture={handleDesktopServicesBlur}
             >
               <button
                 type="button"
@@ -100,7 +108,7 @@ export function Header() {
                 onClick={() => setServicesOpen(value => !value)}
               >
                 <span>{item.label}</span>
-                <b>+</b>
+                <b>⌄</b>
               </button>
               <div className="desktop-subnav" role="menu">
                 {serviceLinks.map(service => (
