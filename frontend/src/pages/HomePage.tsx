@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PageMeta } from '../components/PageMeta';
 import { ProjectPreview } from '../components/ProjectPreview';
-import { faqItems, heroBenefits, processSteps, services, trustedClients } from '../content/siteContent';
+import { faqItems, googleReviews, googleReviewSummary, heroBenefits, processSteps, services, trustedClients } from '../content/siteContent';
 import { projects } from '../data/projects';
 
 function screen(url: string, width = 1500) {
@@ -103,6 +103,9 @@ function BeforeAfterDemo() {
 export default function HomePage() {
   const marqueeProjects = [...projects, ...projects, ...projects];
   const repeatedClients = [...trustedClients, ...trustedClients, ...trustedClients, ...trustedClients];
+  const repeatedGoogleReviews = [...googleReviews, ...googleReviews];
+  const googleReviewsHref = googleReviewSummary.liveCtaHref || googleReviewSummary.ctaHref;
+  const hasLiveGoogleReviewsLink = /^https?:\/\//.test(googleReviewsHref);
 
   return (
     <>
@@ -204,6 +207,48 @@ export default function HomePage() {
               <span key={`${client}-${index}`}><i />{client}</span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section google-reviews-section" aria-labelledby="google-reviews-title">
+        <div className="container google-reviews-shell">
+          <div className="google-reviews-heading">
+            <span className="google-reviews-kicker">{googleReviewSummary.kicker}</span>
+            <h2 id="google-reviews-title">{googleReviewSummary.title}</h2>
+            <p>{googleReviewSummary.text}</p>
+          </div>
+
+          <div className="google-rating-lockup" aria-label={`${googleReviewSummary.rating} av 5 stjärnor baserat på ${googleReviewSummary.reviewCount}`}>
+            <span>{googleReviewSummary.rating}</span>
+            <div>
+              <div className="google-stars" aria-hidden="true">★★★★★</div>
+              <p>{googleReviewSummary.reviewCount}</p>
+            </div>
+          </div>
+
+          <div className="google-review-marquee" aria-label="Google recensioner">
+            <div className="google-review-track">
+              {repeatedGoogleReviews.map((review, index) => (
+                <article className="google-review-card" key={`${review.name}-${index}`}>
+                  <p className="google-review-label">{review.source}</p>
+                  <div className="google-stars" aria-hidden="true">★★★★★</div>
+                  <blockquote>{`“${review.quote}”`}</blockquote>
+                  <strong>{review.name}</strong>
+                  <p className="google-review-source">Verifierad kund</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {hasLiveGoogleReviewsLink ? (
+            <a className="button button-light google-reviews-cta" href={googleReviewsHref} target="_blank" rel="noreferrer">
+              {googleReviewSummary.ctaLabel} <span aria-hidden="true">→</span>
+            </a>
+          ) : (
+            <Link className="button button-light google-reviews-cta" to={googleReviewsHref}>
+              {googleReviewSummary.ctaLabel} <span aria-hidden="true">→</span>
+            </Link>
+          )}
         </div>
       </section>
 

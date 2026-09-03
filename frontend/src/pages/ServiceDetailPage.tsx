@@ -4,7 +4,7 @@ import { PageMeta } from '../components/PageMeta';
 import { ProjectPreview } from '../components/ProjectPreview';
 import { projects } from '../data/projects';
 import NotFoundPage from './NotFoundPage';
-import { serviceLinks, services } from '../content/siteContent';
+import { googleReviews, serviceLinks, services } from '../content/siteContent';
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
@@ -15,6 +15,8 @@ export default function ServiceDetailPage() {
   const relatedServices = services.filter(item => service.relatedServices.includes(item.id));
   const otherServices = serviceLinks.filter(item => item.to !== `/services/${service.slug}`);
   const projectMap = new Map(projects.map(project => [project.slug, project]));
+  const shouldShowReviewExamples = service.id === 'reviews';
+  const reviewPreviewItems = googleReviews.slice(0, 3);
 
   return (
     <>
@@ -79,6 +81,44 @@ export default function ServiceDetailPage() {
           </div>
         </div>
       </section>
+
+      {shouldShowReviewExamples && (
+        <section className="section section-white review-usage-section">
+          <div className="container review-usage-preview-shell">
+            <div className="rabbit-section-heading review-usage-heading review-usage-heading-compact">
+              <span className="section-kicker">Visuellt exempel</span>
+              <h2>Så här kan reviews se ut inne i en hemsida.</h2>
+              <p>En kort preview av samma typ av review-sektion som kan lyfta förtroende direkt på sidan.</p>
+            </div>
+
+            <div className="review-preview-frame" aria-label="Exempel på reviewsektion i hemsida">
+              <div className="review-preview-browser">
+                <i /><i /><i />
+              </div>
+              <div className="review-preview-content">
+                <div className="review-preview-heading">
+                  <span>Vad kunder säger</span>
+                  <strong>Byggt på förtroende</strong>
+                  <p>Reviews placerade direkt i hemsidan för att visa kvalitet och trygghet tidigt.</p>
+                </div>
+
+                <div className="review-preview-marquee">
+                  <div className="review-preview-track">
+                    {[...reviewPreviewItems, ...reviewPreviewItems].map((review, index) => (
+                      <article className="review-preview-card" key={`${review.name}-${index}`}>
+                        <div className="google-stars" aria-hidden="true">★★★★★</div>
+                        <blockquote>{`“${review.quote}”`}</blockquote>
+                        <strong>{review.name}</strong>
+                        <p>{review.source}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section section-white service-showcase-section">
         <div className="container service-links-grid">

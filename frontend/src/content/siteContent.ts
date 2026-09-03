@@ -29,6 +29,46 @@ export const trustedClients = [
   'Penselverket'
 ];
 
+export const googleReviewSummary = {
+  kicker: 'Vad kunder säger',
+  title: 'Byggt på förtroende',
+  text: 'Riktiga ord om upplevelsen från första kontakt till färdigt resultat.',
+  rating: '5.0',
+  reviewCount: '5 omdömen',
+  ctaLabel: 'Läs alla recensioner',
+  ctaHref: '/services/reviews-social-proof',
+  // Replace with the public Google reviews URL when it is ready.
+  liveCtaHref: ''
+};
+
+export const googleReviews = [
+  {
+    name: 'Johan L',
+    quote: 'Snabb återkoppling, tydlig kommunikation och ett professionellt genomfört arbete från första kontakt till färdigt resultat.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Mikaela S',
+    quote: 'Vi fick bra hjälp med både planering och utförande. Teamet var lösningsorienterat och höll det vi kom överens om.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Farid A',
+    quote: 'Seriöst bemötande, snyggt resultat och en process som kändes trygg hela vägen. Vi är väldigt nöjda med helheten.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Sara N',
+    quote: 'Det märktes att de hade koll på detaljerna. Allt blev tydligt förklarat och leveransen kändes genomtänkt från start.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Daniel R',
+    quote: 'Tydlig offert, bra planering och ett resultat som motsvarade våra förväntningar.',
+    source: 'Google Reviews'
+  }
+];
+
 export const processSteps = [
   {
     number: '1',
@@ -83,7 +123,7 @@ export const services = [
     short: 'Ny hemsida eller redesign med tydliga tjänster, CTA:er och mobilfokus.',
     bullets: ['React + TypeScript', 'Responsiv design', 'Tjänstesidor', 'Kontakt- och offertflöden'],
     heroImage: '/assets/Webbdesign-och-utveckling.jpeg',
-    heroImageAlt: 'Webbdesign och utveckling for företag',
+    heroImageAlt: 'Webbdesign och utveckling för företag',
     seoTitle: 'Webbdesign & utveckling',
     metaDescription: 'MediaMagnet bygger företagshemsidor med tydlig struktur, stark design och bättre väg till kontakt, offert och bokning.',
     heroTitle: 'Webbdesign som gör företaget lättare att välja.',
@@ -104,8 +144,8 @@ export const services = [
       'Byggs för att vara lätt att fortsätta förbättra över tid.'
     ],
     relatedServices: ['google', 'reviews'],
-    showcaseTitle: 'Exempel pa hemsidor och redesigns i den har typen av upplagg.',
-    showcaseText: 'Sajter med tydligare struktur, starkare forsta intryck och battre vag till kontakt eller offert.',
+    showcaseTitle: 'Exempel på hemsidor och redesigns i den här typen av upplägg.',
+    showcaseText: 'Sajter med tydligare struktur, starkare första intryck och bättre väg till kontakt eller offert.',
     showcaseEntries: [
       { kind: 'project', slug: 'vaxjo-eltjanst' },
       { kind: 'project', slug: 'penselverket' },
@@ -120,7 +160,7 @@ export const services = [
     short: 'En bättre grund för att bli hittad när kunder söker efter dina tjänster.',
     bullets: ['Google Företagsprofil', 'Search Console', 'Lokal SEO', 'Metadata & innehållsstruktur'],
     heroImage: '/assets/header-Local-SEO-scaled.jpg',
-    heroImageAlt: 'Google och lokal SEO for lokal synlighet',
+    heroImageAlt: 'Google och lokal SEO för lokal synlighet',
     seoTitle: 'Google & lokal SEO',
     metaDescription: 'Hjälp med Google Företagsprofil, lokal SEO, metadata och struktur så ditt företag blir lättare att hitta i rätt sökningar.',
     heroTitle: 'Lokal SEO som ger bättre synlighet i Google.',
@@ -141,10 +181,10 @@ export const services = [
       'Kan göras som grundpaket eller löpande förbättringsarbete.'
     ],
     relatedServices: ['webb', 'reviews'],
-    showcaseTitle: 'Projekt dar struktur och SEO-grund gor stor skillnad.',
-    showcaseText: 'Har passar sajter med tydliga tjanstesidor, lokal relevans och en uppbyggnad som Google lattare kan lasa.',
+    showcaseTitle: 'Projekt där struktur och SEO-grund gör stor skillnad.',
+    showcaseText: 'Här passar sajter med tydliga tjänstesidor, lokal relevans och en uppbyggnad som Google lättare kan läsa.',
     showcaseEntries: [
-      { kind: 'image', image: '/assets/header-Local-SEO-scaled.jpg', alt: 'Lokal SEO och Google-synlighet', label: 'SEO-grund', title: 'Struktur, metadata och lokal relevans som stotter synlighet i Google.' },
+      { kind: 'image', image: '/assets/header-Local-SEO-scaled.jpg', alt: 'Lokal SEO och Google-synlighet', label: 'SEO-grund', title: 'Struktur, metadata och lokal relevans som stöttar synlighet i Google.' },
       { kind: 'project', slug: 'vaxjo-eltjanst' },
       { kind: 'project', slug: 'penselverket' }
     ]
@@ -157,7 +197,7 @@ export const services = [
     short: 'Tydligare social proof som hjälper nya kunder att känna sig tryggare.',
     bullets: ['Review-länk / QR', 'Google-recensioner', 'Projektcase', 'Social proof på hemsidan'],
     heroImage: '/assets/social-proof-examples.jpg',
-    heroImageAlt: 'Reviews och social proof for starkare fortroende',
+    heroImageAlt: 'Reviews och social proof för starkare förtroende',
     seoTitle: 'Reviews & social proof',
     metaDescription: 'Bygg starkare förtroende med Google-recensioner, projektcase och tydlig social proof på hemsidan.',
     heroTitle: 'Reviews som bygger förtroende snabbare.',
@@ -179,9 +219,9 @@ export const services = [
     ],
     relatedServices: ['google', 'webb'],
     showcaseTitle: 'Case som ar bra att lyfta nar du vill visa kvalitet tydligare.',
-    showcaseText: 'Projekt med starkare forsta intryck, tydligare presentation och bra ytor for reviews, fore-efter eller kundbevis.',
+    showcaseText: 'Projekt med starkare första intryck, tydligare presentation och bra ytor för reviews, före-efter eller kundbevis.',
     showcaseEntries: [
-      { kind: 'image', image: '/assets/social-proof-examples.jpg', alt: 'Exempel pa social proof och reviews', label: 'Social proof', title: 'Reviews, kundbevis och starkare forstroendesignaler nara viktiga CTA:er.' },
+      { kind: 'image', image: '/assets/social-proof-examples.jpg', alt: 'Exempel på social proof och reviews', label: 'Social proof', title: 'Reviews, kundbevis och starkare förtroendesignaler nära viktiga CTA:er.' },
       { kind: 'project', slug: 'vaxjo-eltjanst' },
       { kind: 'project', slug: 'birria-seoul' }
     ]
@@ -194,7 +234,7 @@ export const services = [
     short: 'Visuella skärmar för restaurang, kiosk och butik som visar erbjudandet tydligt.',
     bullets: ['TV-format 16:9', 'Meny & priser', 'Kampanjer', 'Visuell mat- och produktpresentation'],
     heroImage: '/assets/menu-nahrayn-mockup.png',
-    heroImageAlt: 'Digitala menyboards for restaurang och kiosk',
+    heroImageAlt: 'Digitala menyboards för restaurang och kiosk',
     seoTitle: 'Digitala menyboards',
     metaDescription: 'Design av digitala menyboards för restaurang, kiosk och butik i 16:9-format med tydliga priser, kampanjer och produktbilder.',
     heroTitle: 'Menyboards som gör bestallningen tydligare.',
@@ -215,12 +255,12 @@ export const services = [
       'Designas för att vara lätt att uppdatera med nya priser eller rätter.'
     ],
     relatedServices: ['webb', 'care'],
-    showcaseTitle: 'Exempel dar menyboards och matdriven design tar mer plats.',
-    showcaseText: 'Har bor det synas projekt med skarmmaterial, menyupplagg och visuellt fokus pa produkter, ratter och priser.',
+    showcaseTitle: 'Exempel där menyboards och matdriven design tar mer plats.',
+    showcaseText: 'Här bör det synas projekt med skärmmaterial, menyupplägg och visuellt fokus på produkter, rätter och priser.',
     showcaseEntries: [
-      { kind: 'image', image: '/assets/menu-nahrayn-mockup.png', alt: 'AL Nahrayn menyboards i restaurangmiljo', label: 'Menyboard', title: 'AL Nahrayn i restaurangmiljo med tydlig layout for ratter och priser.' },
-      { kind: 'image', image: '/assets/menu-nahrayn-01.png', alt: 'AL Nahrayn menyboard', label: 'Menyboard', title: 'Mork premium-kansla med tydlig hierarki i menyn.' },
-      { kind: 'image', image: '/assets/menu-birria-new1.png', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Fargstark board med fokus pa produkter, bilder och snabb lasbarhet.' },
+      { kind: 'image', image: '/assets/menu-nahrayn-mockup.png', alt: 'AL Nahrayn menyboards i restaurangmiljö', label: 'Menyboard', title: 'AL Nahrayn i restaurangmiljö med tydlig layout för rätter och priser.' },
+      { kind: 'image', image: '/assets/menu-nahrayn-01.png', alt: 'AL Nahrayn menyboard', label: 'Menyboard', title: 'Mörk premium-känsla med tydlig hierarki i menyn.' },
+      { kind: 'image', image: '/assets/menu-birria-new1.png', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Färgstark board med fokus på produkter, bilder och snabb läsbarhet.' },
       { kind: 'image', image: '/assets/menu-birria-new2.png', alt: 'Birria Seoul menyboard detalj', label: 'Menyboard', title: 'Ytterligare vy som visar kampanjer, priser och menystruktur.' }
     ]
   },
@@ -232,10 +272,10 @@ export const services = [
     short: 'Jag kan hjälpa till även efter launch så att sidan fortsätter vara uppdaterad och fungerande.',
     bullets: ['Domän & DNS', 'SSL & hosting', 'Mindre uppdateringar', 'Löpande förbättringar'],
     heroImage: '/assets/Hosting-och-lopande.jpeg',
-    heroImageAlt: 'Hosting och lopande hjalp for hemsidor',
+    heroImageAlt: 'Hosting och löpande hjälp för hemsidor',
     seoTitle: 'Hosting & löpande hjälp',
     metaDescription: 'Löpande hjälp med hosting, domän, SSL, mindre uppdateringar och förbättringar efter lansering.',
-    heroTitle: 'Lopande hjalp efter launch.',
+    heroTitle: 'Löpande hjälp efter launch.',
     heroText: 'Hosting, uppdateringar och små förbättringar så hemsidan fortsätter jobba för företaget.',
     intro: 'Lansering är inte slutet. Det är starten på nästa fas. Jag kan hjälpa till med drift, uppdateringar och mindre förbättringar så att hemsidan hålls aktuell, säker och användbar när verksamheten utvecklas.',
     outcomes: ['Mindre teknisk stress', 'Snabbare småuppdateringar', 'En sajt som hålls levande över tid'],
@@ -253,10 +293,10 @@ export const services = [
       'Du får en enklare väg för små ändringar när verksamheten förändras.'
     ],
     relatedServices: ['webb', 'google'],
-    showcaseTitle: 'Sajter som ar bra kandidater for lopande forvaltning och uppdateringar.',
+    showcaseTitle: 'Sajter som är bra kandidater för löpande förvaltning och uppdateringar.',
     showcaseText: 'Projekt som kan byggas vidare med nya tjanster, kampanjer, uppdaterade kontaktvagar och fler landningssidor over tid.',
     showcaseEntries: [
-      { kind: 'image', image: '/assets/Hosting-och-lopande.jpeg', alt: 'Hosting och lopande forvaltning', label: 'Forvaltning', title: 'Drift, uppdateringar och mindre forbattringar efter launch.' },
+      { kind: 'image', image: '/assets/Hosting-och-lopande.jpeg', alt: 'Hosting och löpande förvaltning', label: 'Förvaltning', title: 'Drift, uppdateringar och mindre förbättringar efter launch.' },
       { kind: 'project', slug: 'penselverket' },
       { kind: 'project', slug: 'vaxjo-eltjanst' }
     ]
