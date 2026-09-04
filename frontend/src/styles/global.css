@@ -4019,7 +4019,8 @@ main {
   }
 
   .hero-copy h1 {
-    font-size: clamp(4.5rem, 18vw, 7.6rem)
+    font-size: clamp(4.5rem, 18vw, 7.6rem);
+    transform: translateX(-10px)
   }
 
   .hero-mascot-wrap {
