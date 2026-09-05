@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PageMeta } from '../components/PageMeta';
 import { projects } from '../data/projects';
+import NotFoundPage from './NotFoundPage';
 
 function screenshot(url: string, width = 1600) {
   return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=${width}`;
@@ -31,12 +32,7 @@ export default function ProjectDetailPage() {
   const project = projects.find(item => item.slug === slug);
 
   if (!project) {
-    return (
-      <section className="not-found section-white">
-        <PageMeta title="Projekt hittades inte" description="Projektet kunde inte hittas." />
-        <div className="container"><h1>Projektet kunde inte hittas.</h1><Link className="button button-dark" to="/work">Till projekt ↗</Link></div>
-      </section>
-    );
+    return <NotFoundPage />;
   }
 
   const isRestaurant = project.slug === 'birria-seoul' || project.slug === 'al-nahrayn-fisk';
