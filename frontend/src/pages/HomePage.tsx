@@ -122,7 +122,7 @@ export default function HomePage() {
       <section className="home-hero">
         <div className="container home-hero-grid">
           <div className="hero-copy">
-            <span className="kicker">Webb + Google-synlighet. Gjort för företag som vill växa.</span>
+            <span className="kicker">Ingen mall. Varje hemsida är byggd kring ditt företags personlighet.</span>
             <h1>MediaMagnet</h1>
             <p className="hero-statement">Professionella hemsidor byggda, utvecklade och anpassade för ditt företag.</p>
             <div className="hero-buttons">
@@ -170,14 +170,35 @@ export default function HomePage() {
         <div className="project-marquee" aria-label="Live kundprojekt">
           <div className="project-track">
             {marqueeProjects.map((project, index) => (
-              <a className="marquee-project" href={project.url} target="_blank" rel="noreferrer" key={`${project.slug}-${index}`}>
+              <Link className={`marquee-project tone-accent-${project.tone}`} to={`/work/${project.slug}`} key={`${project.slug}-${index}`}>
                 <ProjectPreview project={project} compact />
                 <div className="marquee-project-copy">
                   <small>{project.domain}</small>
-                  <span>{project.category}</span>
-                  <strong>{project.name}</strong>
+                  <span>{project.category} · {project.city}</span>
+                  <strong>{project.name} ↗</strong>
                 </div>
-              </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section identity-teaser-section">
+        <div className="container identity-teaser-shell">
+          <div className="identity-teaser-intro">
+            <span className="section-kicker light">Varje projekt, en unik personlighet</span>
+            <p>Inte mallar, varje hemsida är formad kring företagets egna identitet, bransch och berättelse.</p>
+          </div>
+          <div className="identity-teaser-grid">
+            {projects.map(project => (
+              <Link key={project.slug} to={`/work/${project.slug}`} className={`identity-teaser-card tone-accent-${project.tone}`}>
+                <span className="identity-teaser-kicker">{project.category} · {project.city}</span>
+                <strong className="identity-teaser-name">{project.name}</strong>
+                <ul className="identity-teaser-tags" aria-label={`Nyckelord för ${project.name}`}>
+                  {project.identity?.keywords.slice(0, 2).map(k => <li key={k}>{k}</li>)}
+                </ul>
+                <span className="identity-teaser-cta">Se caset ↗</span>
+              </Link>
             ))}
           </div>
         </div>
