@@ -222,7 +222,8 @@ main {
 }
 
 .section-white {
-  background: var(--paper-2)
+  padding: 60px 0;
+  /* Sänk från t.ex. 100px/120px */
 }
 
 .section-blue {
@@ -256,17 +257,17 @@ main {
 }
 
 .rabbit-section-heading {
-  max-width: 820px;
-  margin-bottom: 50px
+  margin-bottom: 24px;
 }
 
 .rabbit-section-heading h2 {
-  margin: 16px 0 18px;
-  font-size: clamp(3rem, 6vw, 6.5rem);
-  line-height: .92;
-  letter-spacing: -.068em;
-  font-weight: 900;
-  text-wrap: balance
+  font-size: clamp(2rem, 4vw, 3rem);
+  /* Sänker den enorma textstorleken */
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  /* Minskar utrymmet ner till de 3 korten */
 }
 
 .rabbit-section-heading p {
@@ -1320,23 +1321,26 @@ main {
 /* Steps */
 .three-steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-  border-radius: 24px;
-  overflow: hidden
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  /* Snyggt och tight avstånd mellan kort 1, 2 och 3 */
 }
 
 .step-card {
-  min-height: 360px;
-  padding: 30px;
+  min-height: 260px;
+  /* Sänkt från 360px för att ta bort tom höjd */
+  padding: 24px;
+  /* Något tajtare padding inuti kortet */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  /* Gör att innehållet ligger tajt uppåt istället för utdraget */
+  gap: 16px;
+  /* Jämnt och snyggt avstånd mellan siffra, rubrik och brödtext */
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: #fff;
-  transition: transform .28s var(--ease), background .28s ease, box-shadow .28s ease, border-color .28s ease
+  transition: transform .28s var(--ease), background .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
 
 .step-card:hover {
@@ -1450,6 +1454,44 @@ main {
   box-shadow: 0 24px 52px rgba(0, 0, 0, .24)
 }
 
+/* Per-tone hover accents – each project shows its own brand colour */
+.marquee-project.tone-accent-red:hover {
+  border-color: rgba(255, 75, 35, .55);
+  box-shadow: 0 24px 52px rgba(255, 75, 35, .15)
+}
+
+.marquee-project.tone-accent-gold:hover {
+  border-color: rgba(213, 183, 129, .7);
+  box-shadow: 0 24px 52px rgba(213, 183, 129, .18)
+}
+
+.marquee-project.tone-accent-blue:hover {
+  border-color: rgba(76, 166, 237, .65);
+  box-shadow: 0 24px 52px rgba(76, 166, 237, .16)
+}
+
+.marquee-project.tone-accent-green:hover {
+  border-color: rgba(143, 210, 172, .65);
+  box-shadow: 0 24px 52px rgba(143, 210, 172, .16)
+}
+
+/* Tone-specific category label colour */
+.marquee-project.tone-accent-red .marquee-project-copy span {
+  color: #ff6b45
+}
+
+.marquee-project.tone-accent-gold .marquee-project-copy span {
+  color: #d5b781
+}
+
+.marquee-project.tone-accent-blue .marquee-project-copy span {
+  color: #4ca6ed
+}
+
+.marquee-project.tone-accent-green .marquee-project-copy span {
+  color: #8fd2ac
+}
+
 .marquee-project .project-preview {
   padding: 14px 14px 0
 }
@@ -1496,7 +1538,194 @@ main {
   color: #fff
 }
 
-/* Project preview */
+/* ─── Identity Teaser Strip ─────────────────────────── */
+.identity-teaser-section {
+  padding: 72px 0;
+  background: #0d1210
+}
+
+.identity-teaser-shell {
+  display: grid;
+  gap: 48px
+}
+
+.identity-teaser-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+.identity-teaser-intro p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, .55);
+  max-width: 540px;
+  line-height: 1.65
+}
+
+.identity-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px
+}
+
+.identity-teaser-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 18px;
+  /* Minskad padding runt kortet */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  background: #131a16;
+  overflow: hidden;
+  transition: transform .28s var(--ease), border-color .28s ease, box-shadow .28s ease;
+  min-height: 220px;
+  /* Sänkt från 290px för att stänga luften */
+}
+
+
+.identity-teaser-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .34s ease;
+  pointer-events: none
+}
+
+.identity-teaser-card:hover {
+  transform: translateY(-6px)
+}
+
+/* Tone-specific glow + border on hover */
+.identity-teaser-card.tone-accent-red::before {
+  background: radial-gradient(ellipse at 30% 0%, rgba(255, 75, 35, .22) 0%, transparent 65%)
+}
+
+.identity-teaser-card.tone-accent-red:hover {
+  border-color: rgba(255, 75, 35, .45);
+  box-shadow: 0 20px 48px rgba(255, 75, 35, .12)
+}
+
+.identity-teaser-card.tone-accent-gold::before {
+  background: radial-gradient(ellipse at 30% 0%, rgba(213, 183, 129, .22) 0%, transparent 65%)
+}
+
+.identity-teaser-card.tone-accent-gold:hover {
+  border-color: rgba(213, 183, 129, .55);
+  box-shadow: 0 20px 48px rgba(213, 183, 129, .1)
+}
+
+.identity-teaser-card.tone-accent-blue::before {
+  background: radial-gradient(ellipse at 30% 0%, rgba(76, 166, 237, .2) 0%, transparent 65%)
+}
+
+.identity-teaser-card.tone-accent-blue:hover {
+  border-color: rgba(76, 166, 237, .5);
+  box-shadow: 0 20px 48px rgba(76, 166, 237, .12)
+}
+
+.identity-teaser-card.tone-accent-green::before {
+  background: radial-gradient(ellipse at 30% 0%, rgba(143, 210, 172, .18) 0%, transparent 65%)
+}
+
+.identity-teaser-card.tone-accent-green:hover {
+  border-color: rgba(143, 210, 172, .5);
+  box-shadow: 0 20px 48px rgba(143, 210, 172, .1)
+}
+
+.identity-teaser-card:hover::before {
+  opacity: 1
+}
+
+.identity-teaser-kicker {
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .38);
+  margin-bottom: 4px;
+}
+
+.identity-teaser-card.tone-accent-red .identity-teaser-kicker {
+  color: rgba(255, 107, 69, .75)
+}
+
+.identity-teaser-card.tone-accent-gold .identity-teaser-kicker {
+  color: rgba(213, 183, 129, .75)
+}
+
+.identity-teaser-card.tone-accent-blue .identity-teaser-kicker {
+  color: rgba(76, 166, 237, .75)
+}
+
+.identity-teaser-card.tone-accent-green .identity-teaser-kicker {
+  color: rgba(143, 210, 172, .75)
+}
+
+.identity-teaser-name {
+  font-size: 1.25rem;
+  letter-spacing: -.03em;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  /* Minskat avstånd till puckarna */
+}
+
+.identity-teaser-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  /* Tightare avstånd mellan puckarna */
+}
+
+.identity-teaser-tags li {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 4px 10px;
+  /* Kompaktare puckar */
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.identity-teaser-cta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 16px;
+  /* Minskat avstånd ner till länken */
+}
+
+.identity-teaser-card:hover .identity-teaser-cta {
+  color: rgba(255, 255, 255, .85);
+  letter-spacing: .08em
+}
+
+.identity-teaser-card.tone-accent-red:hover .identity-teaser-cta {
+  color: #ff6b45
+}
+
+.identity-teaser-card.tone-accent-gold:hover .identity-teaser-cta {
+  color: #d5b781
+}
+
+.identity-teaser-card.tone-accent-blue:hover .identity-teaser-cta {
+  color: #4ca6ed
+}
+
+.identity-teaser-card.tone-accent-green:hover .identity-teaser-cta {
+  color: #8fd2ac
+}
+
+
 .project-preview {
   padding: 18px;
   background: #dfe4df
@@ -4558,6 +4787,7 @@ main {
 }
 
 @media(prefers-reduced-motion:reduce) {
+
   .case-hero-birria::before,
   .case-hero-penselverket::before,
   .case-hero-alnahrayn::before {
@@ -5074,6 +5304,7 @@ main {
 }
 
 @media(prefers-reduced-motion:reduce) {
+
   .case-identity .case-identity-keywords li:hover,
   .case-identity-decisions article:hover {
     transform: none
@@ -5808,6 +6039,10 @@ main {
     flex-basis: 430px
   }
 
+  .identity-teaser-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
   .services-grid-new,
   .menu-gallery,
   .case-story-grid,
@@ -6031,6 +6266,14 @@ main {
 
   .label-after {
     right: 12px
+  }
+
+  .identity-teaser-grid {
+    grid-template-columns: 1fr
+  }
+
+  .identity-teaser-section {
+    padding: 52px 0
   }
 
   .trust-strip {
