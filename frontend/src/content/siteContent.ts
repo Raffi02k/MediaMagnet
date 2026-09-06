@@ -147,6 +147,7 @@ export const services = [
     showcaseTitle: 'Exempel på hemsidor och redesigns i den här typen av upplägg.',
     showcaseText: 'Sajter med tydligare struktur, starkare första intryck och bättre väg till kontakt eller offert.',
     showcaseEntries: [
+      { kind: 'project', slug: 'al-nahrayn-fisk' },
       { kind: 'project', slug: 'vaxjo-eltjanst' },
       { kind: 'project', slug: 'penselverket' },
       { kind: 'project', slug: 'birria-seoul' }
@@ -307,3 +308,121 @@ export const serviceLinks = services.map(service => ({
   label: service.navLabel,
   to: `/services/${service.slug}`
 }));
+
+export type ProcessStage = {
+  id: string;
+  step: string;
+  badge: string;
+  title: string;
+  tagline: string;
+  description: string;
+  clientRole: string;
+  raffiRole: string;
+  deliverables: string[];
+  visualType: 'wireframe' | 'design' | 'performance' | 'launch';
+  timeline: string;
+  tools: string[];
+};
+
+export const detailedProcessStages: ProcessStage[] = [
+  {
+    id: 'discovery',
+    step: '01',
+    badge: 'Fas 1 · Discovery & Strategi',
+    title: 'Från affärsmål till en kristallklar struktur',
+    tagline: 'Innan vi rör en enda rad kod kartlägger vi vad besökaren faktiskt behöver se för att välja dig.',
+    description: 'Vi analyserar dina tjänster, målgrupp, konkurrenter och unika styrkor. Målet är att skala bort onödigt brus och bygga en genomtänkt informationsarkitektur med korta vägar till kontakt.',
+    clientRole: 'Dela nuläge, befintligt material och vad som skiljer er från konkurrenterna under ett 30-minuters introduktionssamtal.',
+    raffiRole: 'Konkurrentanalys, informationsarkitektur, sidstruktur, nyckelordskartläggning och definierade konverteringsmål.',
+    deliverables: [
+      'Komplett sitemap & sidstruktur',
+      'Definierade primära & sekundära CTA-vägar',
+      'Teknisk kravspecifikation & innehållsplan',
+      'Lokal SEO-karta för nyckeltjänster'
+    ],
+    visualType: 'wireframe',
+    timeline: 'Dag 1–3',
+    tools: ['Figma Wireframes', 'Lokal SEO-analys', 'Sitemap Mapping']
+  },
+  {
+    id: 'design',
+    step: '02',
+    badge: 'Fas 2 · Skräddarsydd Design & UX',
+    title: 'Ett varumärkesuttryck som sticker ut – inga mallar',
+    tagline: 'Vi skapar en unik visuell identitet skräddarsydd för din verksamhet, anpassad för mobil och desktop.',
+    description: 'Från typografi och färger till mikrointeraktioner och bildmanér. Oavsett om det är rå koreansk streetfood-energi som Birria Seoul eller ordning och pålitlighet som Växjö Eltjänst får varje projekt sin egen själ.',
+    clientRole: 'Testa och klicka i den interaktiva designprototypen och ge ärlig feedback i korta, enkla avstämningar.',
+    raffiRole: 'Formgivning av alla sidor, mobillayouter, designsystem, typografiska val, bildbehandling och interaktiv prototyp.',
+    deliverables: [
+      'Interaktiv Figma-prototyp för mobil & desktop',
+      'Skräddarsytt designsystem (färger, typsnitt, tokens)',
+      'Anpassat bildmanér & grafiska element',
+      'Feedback- och justeringsrunda fram till godkännande'
+    ],
+    visualType: 'design',
+    timeline: 'Dag 4–8',
+    tools: ['Figma Studio', 'Design Tokens', 'Interaktiv prototyp']
+  },
+  {
+    id: 'development',
+    step: '03',
+    badge: 'Fas 3 · Modern Kod & Prestanda',
+    title: 'Blixtsnabb frontend i React, TypeScript & Vite',
+    tagline: 'Ren, modern kod utan tunga plugins eller onödig bloat ger 100/100 i Google Lighthouse.',
+    description: 'Vi bygger hemsidan med samma moderna arkitektur som ledande tech-bolag. Supersnabb laddtid, perfekt responsivitet på alla skärmar, tillgänglighet och teknisk SEO inbyggt i varje enskild komponent.',
+    clientRole: 'Luta dig tillbaka medan sajten kodas och testas på riktiga enheter, eller skicka eventuella sista texter.',
+    raffiRole: 'Frontendutveckling i React/TypeScript/Vite, bildoptimering (WebP/AVIF), semantisk HTML, SEO-metadata och enhetstester.',
+    deliverables: [
+      'Ren & underhållbar React/TypeScript-kodbas',
+      '100/100 i Google Lighthouse prestanda & SEO',
+      'Testad och optimerad för iOS, Android, tablets & desktop',
+      'Formulärintegration & skydd mot spam'
+    ],
+    visualType: 'performance',
+    timeline: 'Dag 9–14',
+    tools: ['React + TypeScript', 'Vite', 'Google Lighthouse', 'Semantic HTML']
+  },
+  {
+    id: 'launch',
+    step: '04',
+    badge: 'Fas 4 · Launch, Google & Tillväxt',
+    title: 'Driftsättning och synlighet där kunderna finns',
+    tagline: 'Sajten går live på din domän med SSL – och vi kopplar ihop Google och lokala skärmar.',
+    description: 'Vi sköter domänkoppling, SSL-certifikat och driftsättning på snabbt globalt CDN. Därefter integrerar vi Google Search Console, optimerar din Google Företagsprofil för lokala sökningar och sätter upp digital signage om du har lokal.',
+    clientRole: 'Slutgodkännande och åtkomst till domänhanterare om du redan äger din domän.',
+    raffiRole: 'Domänkonfiguration, SSL-certifikat, Google Search Console, sitemap-indexering, Google Företagsprofil och utbildning.',
+    deliverables: [
+      'Live driftsättning med snabb global CDN & gratis SSL',
+      'Google Search Console & XML sitemap inskickad',
+      'Google Företagsprofil-granskning & recensionsstrategi',
+      'Digital signage/skärmunderlag vid behov (restauranger/butiker)'
+    ],
+    visualType: 'launch',
+    timeline: 'Launch-dag & fortlöpande',
+    tools: ['Vercel CDN', 'Google Search Console', 'Google Business Profile', 'Signage Export']
+  }
+];
+
+export const processGuarantees = [
+  {
+    num: '01',
+    title: 'Inga tröga mallar',
+    text: 'Varje rad design och kod skräddarsys för ditt företag. Inga sega WordPress-plugins som kraschar.'
+  },
+  {
+    num: '02',
+    title: 'En enda kontaktperson',
+    text: 'Du pratar direkt med mig (Raffi) som designar och bygger. Inga mellanhänder eller projektledare.'
+  },
+  {
+    num: '03',
+    title: 'Fasta priser utan överraskningar',
+    text: 'Tydlig offert och specifikation från dag ett. Du vet exakt vad du får och vad det kostar.'
+  },
+  {
+    num: '04',
+    title: 'Snabb turnaround',
+    text: 'Från första samtal till live-sajt på ca 2–3 veckor med löpande uppdateringar under vägen.'
+  }
+];
+

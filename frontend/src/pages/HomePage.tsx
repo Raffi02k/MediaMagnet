@@ -15,7 +15,6 @@ function BeforeAfterDemo() {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const oldSite = 'https://www.vaxjoeltjanst.se';
   const oldShot = useMemo(() => screen(oldSite), []);
-  const newShot = '/assets/Vaxsjovideo1.gif';
 
   function updatePosition(clientX: number) {
     const stage = stageRef.current;
@@ -59,8 +58,14 @@ function BeforeAfterDemo() {
           <div className="upgrade-layer before-layer">
             <img src={oldShot} alt="Växjö Eltjänsts äldre hemsida" />
           </div>
-          <div className="upgrade-layer after-layer" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-            <img src={newShot} alt="Växjö Eltjänsts nya hemsida byggd av MediaMagnet" />
+          <div className="upgrade-layer after-layer" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
+            <iframe
+              src="https://vaxjo-eltjanst-view.vercel.app"
+              title="Växjö Eltjänst efter redesign, live-förhandsvisning"
+              loading="lazy"
+              allow="autoplay"
+              tabIndex={-1}
+            />
           </div>
           <span className="compare-label label-before">Före</span>
           <span className="compare-label label-after">Efter</span>
