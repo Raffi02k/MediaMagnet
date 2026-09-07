@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type PageMetaProps = {
   title: string;
@@ -7,6 +8,24 @@ type PageMetaProps = {
 };
 
 export function PageMeta({ title, description, noIndex = false }: PageMetaProps) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const url = `https://www.mediamagnet.se${pathname}`;
+    const canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    canonical.href = url;
+    if (!noIndex) document.head.appendChild(canonical);
+    const ogUrl = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
+    const previousUrl = ogUrl?.content;
+    if (ogUrl) ogUrl.content = url;
+
+    return () => {
+      canonical.remove();
+      if (ogUrl && previousUrl !== undefined) ogUrl.content = previousUrl;
+    };
+  }, [pathname, noIndex]);
+
   useEffect(() => {
     if (!noIndex) return;
     const existing = document.querySelector<HTMLMetaElement>('meta[name="robots"]');

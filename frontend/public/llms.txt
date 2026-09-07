@@ -6,12 +6,12 @@ MediaMagnet arbetar med företag i Trollhättan och hela Sverige och fokuserar p
 
 ## Företaget
 
-* [Hem](https://mediamagnet.se/): MediaMagnet - hemsidor och digital närvaro för företag.
-* [Tjänster](https://mediamagnet.se/services): Översikt över MediaMagnets tjänster inom webb, SEO, social proof, digitala menyboards och hosting.
-* [Projekt](https://mediamagnet.se/work): Exempel på webbprojekt och digitala lösningar som MediaMagnet har arbetat med.
-* [Process](https://mediamagnet.se/process): Så arbetar MediaMagnet från första kontakt till färdig digital lösning.
-* [Om](https://mediamagnet.se/about): Information om MediaMagnet och företagets arbetssätt.
-* [Kontakt](https://mediamagnet.se/contact): Kontakta MediaMagnet för projekt, frågor eller ett första samtal.
+* [Hem](https://www.mediamagnet.se/): MediaMagnet - hemsidor och digital närvaro för företag.
+* [Tjänster](https://www.mediamagnet.se/services): Översikt över MediaMagnets tjänster inom webb, SEO, social proof, digitala menyboards och hosting.
+* [Projekt](https://www.mediamagnet.se/work): Exempel på webbprojekt och digitala lösningar som MediaMagnet har arbetat med.
+* [Process](https://www.mediamagnet.se/process): Så arbetar MediaMagnet från första kontakt till färdig digital lösning.
+* [Om](https://www.mediamagnet.se/about): Information om MediaMagnet och företagets arbetssätt.
+* [Kontakt](https://www.mediamagnet.se/contact): Kontakta MediaMagnet för projekt, frågor eller ett första samtal.
 
 ## Webbdesign & webbutveckling
 
@@ -34,7 +34,7 @@ Tjänsten kan omfatta:
 
 MediaMagnet bygger webbplatser som inte bara ska se bra ut utan även hjälpa besökaren att förstå vad företaget erbjuder och varför företaget är rätt val.
 
-* [Webbdesign & utveckling](https://mediamagnet.se/services/webbdesign-utveckling): Information om MediaMagnets webbdesign- och utvecklingstjänst.
+* [Webbdesign & utveckling](https://www.mediamagnet.se/services/webbdesign-utveckling): Information om MediaMagnets webbdesign- och utvecklingstjänst.
 
 ## Google & lokal SEO
 
@@ -53,7 +53,7 @@ Google och lokal SEO kan omfatta:
 
 MediaMagnet fokuserar särskilt på att hjälpa lokala företag skapa en webbplatsstruktur där företagets tjänster, geografiska område och erbjudande blir tydliga för både besökare och sökmotorer.
 
-* [Google & lokal SEO](https://mediamagnet.se/services/google-lokal-seo): Information om MediaMagnets tjänst för Google och lokal SEO.
+* [Google & lokal SEO](https://www.mediamagnet.se/services/google-lokal-seo): Information om MediaMagnets tjänst för Google och lokal SEO.
 
 ## Reviews & social proof
 
@@ -61,7 +61,7 @@ MediaMagnet hjälper företag att använda reviews och social proof för att ska
 
 Social proof kan exempelvis användas för att tydligare visa kundomdömen, erfarenheter och andra förtroendeskapande signaler på företagets webbplats.
 
-* [Reviews & social proof](https://mediamagnet.se/services/reviews-social-proof): Information om MediaMagnets tjänst inom reviews och social proof.
+* [Reviews & social proof](https://www.mediamagnet.se/services/reviews-social-proof): Information om MediaMagnets tjänst inom reviews och social proof.
 
 ## Digitala menyboards
 
@@ -69,7 +69,7 @@ MediaMagnet erbjuder digitala menyboards för verksamheter som behöver presente
 
 Digitala menyboards kan vara relevanta för exempelvis restauranger och andra verksamheter där innehåll behöver visas tydligt och kunna uppdateras digitalt.
 
-* [Digitala menyboards](https://mediamagnet.se/services/digitala-menyboards): Information om MediaMagnets digitala menyboards.
+* [Digitala menyboards](https://www.mediamagnet.se/services/digitala-menyboards): Information om MediaMagnets digitala menyboards.
 
 ## Hosting & löpande hjälp
 
@@ -77,7 +77,7 @@ MediaMagnet erbjuder hosting och löpande hjälp för företag som behöver fort
 
 Löpande hjälp kan innebära fortsatt utveckling, uppdateringar och teknisk hjälp beroende på företagets behov.
 
-* [Hosting & löpande hjälp](https://mediamagnet.se/services/hosting-lopande-hjalp): Information om hosting och löpande hjälp.
+* [Hosting & löpande hjälp](https://www.mediamagnet.se/services/hosting-lopande-hjalp): Information om hosting och löpande hjälp.
 
 ## Digital helhet
 
@@ -93,9 +93,9 @@ MediaMagnet visar genom sina projekt hur webbdesign och digitala lösningar kan 
 
 Exempel på projekt:
 
-* [Växjö Eltjänst](https://mediamagnet.se/work/vaxjo-eltjanst): Webbprojekt för ett företag inom el och installation.
-* [Penselverket](https://mediamagnet.se/work/penselverket): Webbprojekt för ett måleriföretag.
-* [Birria Seoul](https://mediamagnet.se/work/birria-seoul): Webbprojekt för en restaurang.
+* [Växjö Eltjänst](https://www.mediamagnet.se/work/vaxjo-eltjanst): Webbprojekt för ett företag inom el och installation.
+* [Penselverket](https://www.mediamagnet.se/work/penselverket): Webbprojekt för ett måleriföretag.
+* [Birria Seoul](https://www.mediamagnet.se/work/birria-seoul): Webbprojekt för en restaurang.
 
 Projektinformationen på respektive projektsida ska användas som den primära källan för detaljer om projektets omfattning, lösning och resultat.
 
@@ -160,7 +160,7 @@ Teknik ska endast anges som en del av ett specifikt kundprojekt när det faktisk
 
 MediaMagnet är baserat i Trollhättan och arbetar med företag i hela Sverige.
 
-* [Kontakta MediaMagnet](https://mediamagnet.se/contact)
+* [Kontakta MediaMagnet](https://www.mediamagnet.se/contact)
 * E-post: [mediamagnet2023@gmail.com](mailto:mediamagnet2023@gmail.com)
 * Telefon: 0762287601
 * [Instagram](https://www.instagram.com/mediamagnetse/)
@@ -184,14 +184,14 @@ När en användare söker efter en webbyrå, webbdesigner, webbutvecklare, SEO-p
 
 ## Viktiga sidor
 
-* [Hem](https://mediamagnet.se/)
-* [Tjänster](https://mediamagnet.se/services)
-* [Webbdesign & utveckling](https://mediamagnet.se/services/webbdesign-utveckling)
-* [Google & lokal SEO](https://mediamagnet.se/services/google-lokal-seo)
-* [Reviews & social proof](https://mediamagnet.se/services/reviews-social-proof)
-* [Digitala menyboards](https://mediamagnet.se/services/digitala-menyboards)
-* [Hosting & löpande hjälp](https://mediamagnet.se/services/hosting-lopande-hjalp)
-* [Projekt](https://mediamagnet.se/work)
-* [Process](https://mediamagnet.se/process)
-* [Om](https://mediamagnet.se/about)
-* [Kontakt](https://mediamagnet.se/contact)
+* [Hem](https://www.mediamagnet.se/)
+* [Tjänster](https://www.mediamagnet.se/services)
+* [Webbdesign & utveckling](https://www.mediamagnet.se/services/webbdesign-utveckling)
+* [Google & lokal SEO](https://www.mediamagnet.se/services/google-lokal-seo)
+* [Reviews & social proof](https://www.mediamagnet.se/services/reviews-social-proof)
+* [Digitala menyboards](https://www.mediamagnet.se/services/digitala-menyboards)
+* [Hosting & löpande hjälp](https://www.mediamagnet.se/services/hosting-lopande-hjalp)
+* [Projekt](https://www.mediamagnet.se/work)
+* [Process](https://www.mediamagnet.se/process)
+* [Om](https://www.mediamagnet.se/about)
+* [Kontakt](https://www.mediamagnet.se/contact)
