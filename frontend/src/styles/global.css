@@ -4400,6 +4400,11 @@ main {
 
 
 /* About */
+.about-page-hero::after,
+.contact-hero::after {
+  background: linear-gradient(180deg, rgba(8, 13, 11, .7), rgba(8, 13, 11, .62) 45%, rgba(8, 13, 11, .88))
+}
+
 .about-founder-section {
   background: var(--ink);
   color: #fff
@@ -4422,6 +4427,8 @@ main {
 }
 
 .founder-photo-wrap img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -4466,9 +4473,9 @@ main {
 
 .founder-copy h2 {
   margin: 16px 0 18px;
-  font-size: clamp(4rem, 7vw, 7rem);
-  line-height: .86;
-  letter-spacing: -.075em
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: .98;
+  letter-spacing: -.06em
 }
 
 .founder-copy p {
@@ -4480,25 +4487,61 @@ main {
 
 .founder-copy .button {
   width: max-content;
+  max-width: 100%;
   margin-top: 10px
+}
+
+.founder-copy .founder-lead {
+  color: #f3f4ef;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  letter-spacing: -.025em
+}
+
+.founder-note {
+  margin: 8px 0 22px;
+  padding: 22px;
+  border: 1px solid rgba(217, 255, 114, .2);
+  border-left: 3px solid var(--lime);
+  border-radius: 4px 16px 16px 4px;
+  background: rgba(217, 255, 114, .035);
+  transition: background .24s ease, border-color .24s ease
+}
+
+.founder-note>span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--lime);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .06em
+}
+
+.founder-note p {
+  margin: 0
+}
+
+.build-principles .rabbit-section-heading {
+  max-width: 1000px
+}
+
+.build-principles .rabbit-section-heading h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+  line-height: 1.04
 }
 
 .principle-three {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px
 }
 
 .principle-three article {
-  min-height: 310px;
   padding: 28px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: 20px;
   background: #fff;
-  transition: transform .28s var(--ease), background .28s ease, box-shadow .28s ease
+  transition: transform .28s var(--ease), background .28s ease, box-shadow .28s ease, border-color .28s ease
 }
 
 .principle-three span {
@@ -4508,9 +4551,11 @@ main {
 }
 
 .principle-three h3 {
-  margin: 115px 0 12px;
-  font-size: 1.4rem;
-  letter-spacing: -.04em
+  margin: 26px 0 14px;
+  font-size: 1.6rem;
+  line-height: 1.12;
+  letter-spacing: -.04em;
+  transition: color .24s ease
 }
 
 .principle-three p {
@@ -4519,26 +4564,240 @@ main {
   line-height: 1.7
 }
 
-.principle-three article:hover {
-  transform: translateY(-6px);
-  background: #f7f9f4;
-  box-shadow: 0 16px 36px rgba(17, 23, 20, .08)
+.about-next-section {
+  color: #fff;
+  background: radial-gradient(ellipse at top right, rgba(31, 104, 255, .18), transparent 65%), var(--ink)
 }
 
-.principle-three article:hover h3 {
-  color: var(--blue)
+.about-next-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: center
+}
+
+.about-next-grid h2 {
+  max-width: 800px;
+  margin: 18px 0;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -.05em
+}
+
+.about-next-grid p {
+  max-width: 620px;
+  margin: 0;
+  color: #b0bab5;
+  line-height: 1.75
+}
+
+.about-next-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+@media(hover:hover) and (pointer:fine) {
+  .principle-three article:hover {
+    transform: translateY(-5px);
+    background: #f8faff;
+    border-color: rgba(31, 104, 255, .28);
+    box-shadow: 0 16px 36px rgba(17, 23, 20, .08)
+  }
+
+  .principle-three article:hover h3 {
+    color: var(--blue)
+  }
+
+  .founder-note:hover {
+    background: rgba(217, 255, 114, .07);
+    border-color: rgba(217, 255, 114, .45)
+  }
+}
+
+@media(max-width:800px) {
+  .about-next-grid {
+    grid-template-columns: 1fr;
+    text-align: center
+  }
+
+  .about-next-grid p {
+    margin-inline: auto
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .principle-three article:hover,
+  .founder-photo-wrap:hover,
+  .founder-photo-wrap:hover img,
+  .founder-photo-wrap:hover span {
+    transform: none
+  }
 }
 
 /* Contact */
+.contact-hero .hero-buttons {
+  justify-content: center
+}
+
+.contact-details-section .form-card {
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(17, 23, 20, .05);
+  scroll-margin-top: calc(var(--header-offset) + 24px)
+}
+
+.contact-form-heading {
+  margin-bottom: 28px
+}
+
+.contact-form-heading h2 {
+  margin: 16px 0 12px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -.04em
+}
+
+.contact-form-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6
+}
+
+.contact-next-steps {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line)
+}
+
+.contact-next-steps h3 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  letter-spacing: -.025em
+}
+
+.contact-next-steps ol {
+  display: grid;
+  gap: 12px;
+  padding-left: 22px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.65
+}
+
+.contact-next-steps li::marker {
+  color: var(--blue);
+  font-weight: 800
+}
+
+.contact-location-section {
+  background: var(--ink);
+  color: #fff
+}
+
+.contact-location-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px
+}
+
+.contact-location-heading>div {
+  max-width: 760px
+}
+
+.contact-location-heading h2 {
+  margin: 18px 0;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -.05em
+}
+
+.contact-location-heading p {
+  margin: 0;
+  color: #b0bab5;
+  line-height: 1.75
+}
+
+.contact-location-heading>a {
+  flex-shrink: 0
+}
+
+.contact-map-shell {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 24px;
+  background: #f3f4ef;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .2)
+}
+
+.contact-map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  color: var(--ink);
+  font-size: .8rem;
+  font-weight: 750
+}
+
+.contact-map-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff
+}
+
+.contact-map-toggle button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: .75rem;
+  font-weight: 750;
+  transition: background .2s ease, color .2s ease
+}
+
+.contact-map-toggle button:hover {
+  background: #eaf0ff
+}
+
+.contact-map-toggle button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--lime)
+}
+
+.contact-map-shell iframe {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 45vw, 540px);
+  border: 0
+}
+
+@media(max-width:900px) {
+  .contact-location-heading {
+    flex-direction: column;
+    align-items: flex-start
+  }
+}
+
 .contact-page-grid {
   display: grid;
-  grid-template-columns: .85fr 1.15fr;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
   gap: 20px;
   align-items: start
 }
 
 .contact-info-card,
 .form-card {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 28px;
   background: #f7f8f5;
@@ -4547,8 +4806,8 @@ main {
 
 .contact-info-card h2 {
   margin: 16px 0 15px;
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: .91;
+  font-size: clamp(2.2rem, 3.4vw, 3.5rem);
+  line-height: 1.05;
   letter-spacing: -.065em
 }
 
@@ -4587,6 +4846,7 @@ main {
 }
 
 .contact-links strong {
+  overflow-wrap: anywhere;
   font-size: .88rem;
   transition: color .22s ease
 }
@@ -4611,7 +4871,7 @@ main {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 14px
 }
 
@@ -4621,6 +4881,10 @@ main {
   font-size: .68rem;
   font-weight: 850;
   color: #4d5952
+}
+
+.contact-form label {
+  min-width: 0
 }
 
 .contact-form input,
@@ -6653,7 +6917,7 @@ main {
   }
 
   .founder-copy h2 {
-    font-size: 4.1rem
+    font-size: clamp(2.8rem, 12vw, 4.1rem)
   }
 
   .form-row {
@@ -6666,7 +6930,7 @@ main {
   }
 
   .contact-info-card h2 {
-    font-size: 3.4rem
+    font-size: clamp(2rem, 9vw, 3rem)
   }
 
   .case-hero {

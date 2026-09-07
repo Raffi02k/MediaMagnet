@@ -56,22 +56,22 @@ export function ContactForm() {
       <div className="form-row">
         <label>
           <span>Namn *</span>
-          <input name="name" required placeholder="Ditt namn" />
+            <input name="name" autoComplete="name" required placeholder="Ditt namn" />
         </label>
         <label>
           <span>E-post *</span>
-          <input name="email" type="email" required placeholder="namn@foretag.se" />
+            <input name="email" type="email" autoComplete="email" required placeholder="namn@foretag.se" />
         </label>
       </div>
 
       <div className="form-row">
         <label>
           <span>Företag</span>
-          <input name="company" placeholder="Företagsnamn" />
+            <input name="company" autoComplete="organization" placeholder="Företagsnamn" />
         </label>
         <label>
           <span>Telefon</span>
-          <input name="phone" type="tel" placeholder="070-000 00 00" />
+            <input name="phone" type="tel" autoComplete="tel" placeholder="070-000 00 00" />
         </label>
       </div>
 
@@ -113,7 +113,9 @@ export function ContactForm() {
         {state.kind === 'loading' ? 'Skickar...' : 'Skicka förfrågan ↗'}
       </button>
 
-      {state.kind !== 'idle' && <div className={`form-status ${state.kind}`}>{state.message}</div>}
+      <div role="status" aria-live="polite" aria-atomic="true">
+        {state.kind !== 'idle' && <div className={`form-status ${state.kind}`}>{state.message}</div>}
+      </div>
     </form>
   );
 }

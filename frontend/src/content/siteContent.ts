@@ -389,9 +389,10 @@ export const detailedProcessStages: ProcessStage[] = [
     title: 'Driftsättning och synlighet där kunderna finns',
     tagline: 'Sajten går live på din domän med SSL – och vi kopplar ihop Google och lokala skärmar.',
     description: 'Vi sköter domänkoppling, SSL-certifikat och driftsättning på snabbt globalt CDN. Därefter integrerar vi Google Search Console, optimerar din Google Företagsprofil för lokala sökningar och sätter upp digital signage om du har lokal.',
-    clientRole: 'Slutgodkännande och åtkomst till domänhanterare om du redan äger din domän.',
+    clientRole: 'Du slutgodkänner sajten och registrerar domänen i ditt eget namn eller företag, med min guidning vid behov. Har du redan domän eller e-post på den berättar du det innan vi ändrar något.',
     raffiRole: 'Domänkonfiguration, SSL-certifikat, Google Search Console, sitemap-indexering, Google Företagsprofil och utbildning.',
     deliverables: [
+      'Domänhjälp: guidning vid registrering, DNS-koppling och kontroll av www & HTTPS',
       'Live driftsättning med snabb global CDN & gratis SSL',
       'Google Search Console & XML sitemap inskickad',
       'Google Företagsprofil-granskning & recensionsstrategi',
@@ -425,4 +426,3 @@ export const processGuarantees = [
     text: 'Från första samtal till live-sajt på ca 2–3 veckor med löpande uppdateringar under vägen.'
   }
 ];
-
