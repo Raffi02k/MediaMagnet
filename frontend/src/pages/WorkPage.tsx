@@ -9,7 +9,7 @@ export default function WorkPage() {
     <>
       <PageMeta title="Projekt" description="Fyra live kundprojekt från MediaMagnet inom restaurang, elektriker och måleri." />
       <section
-        className="page-hero page-backdrop-hero"
+        className="page-hero page-backdrop-hero work-page-hero"
         style={{ '--page-hero-image': 'url(/assets/sv-projekt-preview.jpg)' } as CSSProperties}
       >
         <div className="container page-hero-shell">

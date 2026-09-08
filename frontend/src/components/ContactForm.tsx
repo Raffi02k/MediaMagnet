@@ -1,4 +1,8 @@
 import { FormEvent, useState } from 'react';
+import { site } from '../content/siteContent';
+
+const contactFormPaused = true;
+const pausedMessage = 'Jag arbetar på kontaktformuläret just nu. Din förfrågan har inte skickats. Kontakta mig via telefon eller e-post så hjälper jag dig direkt.';
 
 type State = {
   kind: 'idle' | 'loading' | 'success' | 'error';
@@ -10,6 +14,10 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (contactFormPaused) {
+      setState({ kind: 'error', message: pausedMessage });
+      return;
+    }
     const form = event.currentTarget;
     const data = new FormData(form);
 
@@ -52,7 +60,16 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={handleSubmit} noValidate={contactFormPaused}>
+      {contactFormPaused && (
+        <div className="form-status">
+          <p>Kontaktformuläret är tillfälligt pausat medan jag arbetar på det. Ring eller mejla mig under tiden.</p>
+          <div className="hero-buttons">
+            <a className="button button-dark" href={`tel:${site.phone.replace(/\s+/g, '')}`}>Ring {site.phone}</a>
+            <a className="button button-light" href={`mailto:${site.email}`}>Mejla mig</a>
+          </div>
+        </div>
+      )}
       <div className="form-row">
         <label>
           <span>Namn *</span>
