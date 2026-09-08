@@ -2329,7 +2329,7 @@ main {
   animation-delay: .36s
 }
 
-.page-hero-points span:hover {
+.page-hero:not(.contact-hero) .page-hero-points span:hover {
   transform: translateY(-4px) scale(1.02);
   background: rgba(217, 255, 114, .2);
   border-color: rgba(217, 255, 114, .34)
