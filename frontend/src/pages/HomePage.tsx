@@ -145,7 +145,7 @@ export default function HomePage() {
             <Link className="hero-mascot-link" to="/contact" tabIndex={-1}>
               <picture>
                 <source media="(max-width: 800px)" srcSet="/assets/raffiMascot-mobile.WebP" />
-                <img className="hero-mascot" src="/assets/raffiMascot.WebP" alt="Mascot" width="356" height="534" fetchPriority="high" />
+                <img className="hero-mascot" src="/assets/raffiMascot.WebP" alt="" fetchPriority="high" />
               </picture>
             </Link>
           </div>
