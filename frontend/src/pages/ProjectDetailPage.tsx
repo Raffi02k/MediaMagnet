@@ -81,7 +81,7 @@ function VaxjoCompare() {
   return (
     <div className="case-compare">
       <div className="case-compare-stage">
-        <img src={before} alt="Växjö Eltjänst före redesign" />
+        <img src={before} alt="Växjö Eltjänst före redesign" loading="lazy" decoding="async" />
         <div className="case-compare-after" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
           <iframe
             src="https://vaxjo-eltjanst-view.vercel.app"

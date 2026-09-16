@@ -56,7 +56,7 @@ function BeforeAfterDemo() {
           }}
         >
           <div className="upgrade-layer before-layer">
-            <img src={oldShot} alt="Växjö Eltjänsts äldre hemsida" />
+            <img src={oldShot} alt="Växjö Eltjänsts äldre hemsida" loading="lazy" decoding="async" />
           </div>
           <div className="upgrade-layer after-layer" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
             <iframe

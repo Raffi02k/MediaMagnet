@@ -12,7 +12,7 @@ function screenshotUrl(url: string, width = 1400) {
 
 export function ProjectPreview({ project, compact = false }: ProjectPreviewProps) {
   const [failed, setFailed] = useState(false);
-  const shot = useMemo(() => screenshotUrl(project.url, compact ? 1100 : 1500), [project.url, compact]);
+  const shot = useMemo(() => screenshotUrl(project.url, compact ? 700 : 900), [project.url, compact]);
 
   return (
     <div className={`project-preview tone-${project.tone}${compact ? ' compact' : ''}`}>
@@ -24,7 +24,7 @@ export function ProjectPreview({ project, compact = false }: ProjectPreviewProps
         </div>
         <div className="browser-screen">
           {!failed ? (
-            <img src={shot} alt={`Förhandsvisning av ${project.name}`} loading="lazy" onError={() => setFailed(true)} />
+            <img src={shot} alt={`Förhandsvisning av ${project.name}`} loading="lazy" decoding="async" onError={() => setFailed(true)} />
           ) : (
             <div className="browser-fallback">
               <small>{project.category} · {project.city}</small>
