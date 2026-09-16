@@ -86,7 +86,10 @@ export function Header() {
           aria-label="MediaMagnet startsida"
           onClick={event => handleSamePageClick(event, '/')}
         >
-          <img className="brand-full-logo" src="/assets/Logo_with_text.WebP" alt="MediaMagnet" />
+          <picture>
+            <source media="(max-width: 800px)" srcSet="/assets/Logo_with_text-mobile.WebP" />
+            <img className="brand-full-logo" src="/assets/Logo_with_text.WebP" alt="MediaMagnet" width="600" height="200" />
+          </picture>
         </Link>
 
         <nav className="desktop-nav" aria-label="Huvudnavigation">

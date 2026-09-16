@@ -42,7 +42,7 @@ function ElectricianHeroVideo() {
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
       />
       <button className="case-video-toggle" type="button" onClick={() => setPaused(value => !value)}>

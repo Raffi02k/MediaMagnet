@@ -143,7 +143,10 @@ export default function HomePage() {
               <small>GOOGLE · REVIEWS · GROWTH</small>
             </div>
             <Link className="hero-mascot-link" to="/contact" tabIndex={-1}>
-              <img className="hero-mascot" src="/assets/raffiMascot.WebP" alt="" />
+              <picture>
+                <source media="(max-width: 800px)" srcSet="/assets/raffiMascot-mobile.WebP" />
+                <img className="hero-mascot" src="/assets/raffiMascot.WebP" alt="" />
+              </picture>
             </Link>
           </div>
         </div>
@@ -323,7 +326,10 @@ export default function HomePage() {
             <Link className="button button-white button-large" to="/contact">Starta projekt ↗</Link>
           </div>
           <Link className="final-cta-mascot" to="/contact" aria-hidden="true" tabIndex={-1}>
-            <img src="/assets/raffiMascot.WebP" alt="" />
+            <picture>
+              <source media="(max-width: 800px)" srcSet="/assets/raffiMascot-mobile.WebP" />
+              <img src="/assets/raffiMascot.WebP" alt="" />
+            </picture>
           </Link>
         </div>
       </section>
