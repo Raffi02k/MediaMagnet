@@ -43,7 +43,8 @@ export function PageMeta({ title, description, noIndex = false }: PageMetaProps)
   }, [noIndex]);
 
   useEffect(() => {
-    document.title = `${title} | MediaMagnet`;
+    const titleWithWebbdesign = title.includes('Webbdesign') ? title : `${title} | Webbdesign`;
+    document.title = `${titleWithWebbdesign} | MediaMagnet`;
     let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
     if (!meta) {
       meta = document.createElement('meta');
