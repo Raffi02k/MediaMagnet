@@ -10,11 +10,12 @@ function screenshot(url: string, width = 1600) {
 
 function ElectricianHeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [paused, setPaused] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const handleChange = () => setPaused(preference.matches);
+    handleChange();
     preference.addEventListener('change', handleChange);
     return () => preference.removeEventListener('change', handleChange);
   }, []);
@@ -23,7 +24,7 @@ function ElectricianHeroVideo() {
     const video = videoRef.current;
     if (!video) return;
     let cancelled = false;
-    if (paused) video.pause();
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) video.pause();
     else void video.play().catch(() => {
       if (!cancelled) setPaused(true);
     });
