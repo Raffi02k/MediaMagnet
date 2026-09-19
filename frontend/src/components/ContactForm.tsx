@@ -1,4 +1,6 @@
 import { FormEvent, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { pricingPlans } from '../content/pricing';
 import { site } from '../content/siteContent';
 
 // Set to false when the CRM endpoint is ready.
@@ -12,6 +14,10 @@ type State = {
 };
 
 export function ContactForm() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedPlan = pricingPlans.find(plan => plan.id === searchParams.get('plan'));
+  const [otherService, setOtherService] = useState('Ny hemsida');
+  const [message, setMessage] = useState<string | null>(null);
   const [state, setState] = useState<State>({ kind: 'idle', message: '' });
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -74,6 +80,7 @@ export function ContactForm() {
         });
       }
       form.reset();
+      setMessage(null);
     } catch {
       setState({
         kind: 'error',
@@ -84,6 +91,7 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate={contactFormPaused}>
+      {selectedPlan && <p>Din förfrågan gäller <strong>{selectedPlan.name} · {selectedPlan.price} kr {selectedPlan.period}, exkl. moms</strong>.</p>}
       {contactFormPaused && (
         <div className="form-status">
           <p>Kontaktformuläret är tillfälligt pausat medan jag arbetar på det. Ring eller mejla mig under tiden.</p>
@@ -118,14 +126,28 @@ export function ContactForm() {
       <div className="form-row">
         <label>
           <span>Vad vill du ha hjälp med?</span>
-          <select name="service" defaultValue="Ny hemsida">
-            <option>Ny hemsida</option>
-            <option>Redesign av nuvarande hemsida</option>
-            <option>Google & lokal SEO</option>
-            <option>Reviews & Google Business</option>
-            <option>Digitala menyboards</option>
-            <option>Hosting & löpande hjälp</option>
-            <option>Annat</option>
+          <select name="service" value={selectedPlan?.name ?? otherService} onChange={event => {
+            const plan = pricingPlans.find(item => item.name === event.target.value);
+            const params = new URLSearchParams(searchParams);
+            if (plan) params.set('plan', plan.id);
+            else {
+              params.delete('plan');
+              setOtherService(event.target.value);
+            }
+            setSearchParams(params, { replace: true, preventScrollReset: true });
+          }}>
+            <optgroup label="Paket">
+              {pricingPlans.map(plan => <option key={plan.id} value={plan.name}>{plan.name} – {plan.price} kr {plan.period}, exkl. moms</option>)}
+            </optgroup>
+            <optgroup label="Övriga tjänster">
+              <option>Ny hemsida</option>
+              <option>Redesign av nuvarande hemsida</option>
+              <option>Google & lokal SEO</option>
+              <option>Reviews & Google Business</option>
+              <option>Digitala menyboards</option>
+              <option>Hosting & löpande hjälp</option>
+              <option>Övrigt / annat</option>
+            </optgroup>
           </select>
         </label>
         <label>
@@ -136,7 +158,7 @@ export function ContactForm() {
 
       <label>
         <span>Berätta kort om projektet *</span>
-        <textarea name="message" required minLength={15} placeholder="Vad vill du förbättra och vad ska hemsidan hjälpa företaget med?" />
+        <textarea name="message" required minLength={15} value={message ?? (selectedPlan ? `Jag är intresserad av ${selectedPlan.name.toLowerCase()} (${selectedPlan.price} kr ${selectedPlan.period}, exkl. moms). ` : '')} onChange={event => setMessage(event.target.value)} placeholder="Vad vill du förbättra och vad ska hemsidan hjälpa företaget med?" />
       </label>
 
       <label className="honeypot" aria-hidden="true">

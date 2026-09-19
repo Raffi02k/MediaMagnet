@@ -5,6 +5,8 @@ import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProcessPage from './pages/ProcessPage';
+import PricingPage from './pages/PricingPage';
+import PlanDetailPage from './pages/PlanDetailPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ServicesPage from './pages/ServicesPage';
@@ -16,6 +18,8 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="services" element={<ServicesPage />} />
+          <Route path="pricing" element={<PricingPage />} />
+          <Route path="pricing/:planId" element={<PlanDetailPage />} />
           <Route path="services/:slug" element={<ServiceDetailPage />} />
           <Route path="work" element={<WorkPage />} />
           <Route path="work/:slug" element={<ProjectDetailPage />} />

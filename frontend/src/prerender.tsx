@@ -4,9 +4,11 @@ import App from './App';
 import { PageMetaContext, type PageMetadata } from './components/PageMeta';
 import { services } from './content/siteContent';
 import { projects } from './data/projects';
+import { pricingPlans } from './content/pricing';
 
 export const routes = [
-  '/', '/services', '/work', '/process', '/about', '/contact',
+  '/', '/services', '/pricing', '/work', '/process', '/about', '/contact',
+  ...pricingPlans.map(plan => `/pricing/${plan.id}`),
   ...services.map(service => `/services/${service.slug}`),
   ...projects.map(project => `/work/${project.slug}`)
 ];

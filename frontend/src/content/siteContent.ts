@@ -10,6 +10,7 @@ export const site = {
 export const navigation = [
   { label: 'Hem', to: '/' },
   { label: 'Tjänster', to: '/services' },
+  { label: 'Priser', to: '/pricing' },
   { label: 'Projekt', to: '/work' },
   { label: 'Process', to: '/process' },
   { label: 'Om', to: '/about' },
