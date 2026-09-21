@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { pricingPlans } from '../content/pricing';
 import { site } from '../content/siteContent';
@@ -13,8 +13,15 @@ type State = {
 };
 
 export function ContactForm() {
+  const [isMounted, setIsMounted] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedPlan = pricingPlans.find(plan => plan.id === searchParams.get('plan'));
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const planParam = isMounted ? searchParams.get('plan') : null;
+  const selectedPlan = pricingPlans.find(plan => plan.id === planParam);
   const [otherService, setOtherService] = useState('Ny hemsida');
   const [message, setMessage] = useState<string | null>(null);
   const [state, setState] = useState<State>({ kind: 'idle', message: '' });
