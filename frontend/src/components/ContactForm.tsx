@@ -3,8 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { pricingPlans } from '../content/pricing';
 import { site } from '../content/siteContent';
 
-// Set to false when the CRM endpoint is ready.
-const useWeb3Forms = true;
+// Contact form pausing option if maintenance is needed
 const contactFormPaused = false;
 const pausedMessage = 'Jag arbetar på kontaktformuläret just nu. Din förfrågan har inte skickats. Kontakta mig via telefon eller e-post så hjälper jag dig direkt.';
 
@@ -34,51 +33,38 @@ export function ContactForm() {
     setState({ kind: 'loading', message: 'Skickar din förfrågan...' });
 
     try {
-      if (useWeb3Forms) {
-        data.set('botcheck', String(data.get('website') ?? ''));
-        data.delete('website');
-        data.set('access_key', 'fa263251-5860-4fc9-9952-30c818055d93');
-        data.set('subject', 'Ny projektförfrågan från MediaMagnet');
-        data.set('from_name', 'MediaMagnet kontaktformulär');
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: data
-        });
-        const body = await response.json() as { success?: boolean };
-        if (!response.ok || body.success !== true) throw new Error('Kunde inte skicka just nu.');
+      const payload = {
+        form_type: 'contact',
+        name: String(data.get('name') ?? ''),
+        email: String(data.get('email') ?? ''),
+        phone: String(data.get('phone') ?? ''),
+        company: String(data.get('company') ?? ''),
+        service: String(data.get('service') ?? ''),
+        websiteUrl: String(data.get('websiteUrl') ?? ''),
+        message: String(data.get('message') ?? ''),
+        consent: data.get('consent') === 'on',
+        website: String(data.get('website') ?? '')
+      };
 
-        setState({
-          kind: 'success',
-          message: 'Tack! Din förfrågan har skickats. Jag hör av mig så snart jag kan.'
-        });
-      } else {
-        const payload = {
-          name: String(data.get('name') ?? ''),
-          email: String(data.get('email') ?? ''),
-          phone: String(data.get('phone') ?? ''),
-          company: String(data.get('company') ?? ''),
-          service: String(data.get('service') ?? ''),
-          websiteUrl: String(data.get('websiteUrl') ?? ''),
-          message: String(data.get('message') ?? ''),
-          consent: data.get('consent') === 'on',
-          website: String(data.get('website') ?? '')
-        };
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const body = (await response.json().catch(() => ({}))) as {
+        message?: string;
+        detail?: string;
+        status?: string;
+      };
+      if (!response.ok) throw new Error(body.detail || 'Kunde inte skicka just nu.');
 
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const body = await response.json().catch(() => ({})) as { message?: string; detail?: string; status?: string };
-        if (!response.ok) throw new Error(body.detail || 'Kunde inte skicka just nu.');
-
-        setState({
-          kind: 'success',
-          message: body.status === 'preview'
-            ? 'Formuläret är i preview-läge. Koppla SMTP-miljövariabler i produktion för riktig e-post.'
-            : body.message || 'Tack! Jag hör av mig så snart jag kan.'
-        });
-      }
+      setState({
+        kind: 'success',
+        message:
+          body.status === 'preview'
+            ? 'Formuläret är validerat. Ställ in WEB3FORMS_ACCESS_KEY i Vercels miljövariabler för att skicka till din inkorg.'
+            : body.message || 'Tack! Din förfrågan har skickats. Jag hör av mig så snart jag kan.'
+      });
       form.reset();
       setMessage(null);
     } catch {
