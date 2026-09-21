@@ -10,8 +10,5 @@
       "destination": "https://www.mediamagnet.se/:path*",
       "permanent": true
     }
-  ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" }
   ]
 }
