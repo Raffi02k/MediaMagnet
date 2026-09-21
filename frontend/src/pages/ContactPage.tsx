@@ -5,7 +5,7 @@ import { PageMeta } from '../components/PageMeta';
 import { site } from '../content/siteContent';
 
 export default function ContactPage() {
-  const [mapType, setMapType] = useState<'m' | 'k'>('m');
+  const [mapType, setMapType] = useState<'m' | 'k'>('k');
   return (
     <>
       <PageMeta title="Kontakt" description="Boka ett första samtal med MediaMagnet om hemsida, redesign, Google, reviews eller digitala menyboards." />
@@ -77,14 +77,14 @@ export default function ContactPage() {
             <div className="contact-map-toolbar">
               <span>Trollhättan, Sverige</span>
               <div className="contact-map-toggle" role="group" aria-label="Kartläge">
-                <button type="button" aria-pressed={mapType === 'm'} aria-controls="contact-map" onClick={() => setMapType('m')}>Karta</button>
                 <button type="button" aria-pressed={mapType === 'k'} aria-controls="contact-map" onClick={() => setMapType('k')}>Satellit</button>
+                <button type="button" aria-pressed={mapType === 'm'} aria-controls="contact-map" onClick={() => setMapType('m')}>Karta</button>
               </div>
             </div>
             <iframe
               id="contact-map"
               src={`https://maps.google.com/maps?q=Trollh%C3%A4ttan%2C%20Sverige&z=12&t=${mapType}&output=embed`}
-              title={`Google Maps över Trollhättan, ${mapType === 'm' ? 'kartläge' : 'satellitläge'}`}
+              title={`Google Maps över Trollhättan, ${mapType === 'k' ? 'satellitläge' : 'kartläge'}`}
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
