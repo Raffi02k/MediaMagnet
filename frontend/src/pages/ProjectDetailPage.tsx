@@ -4,10 +4,6 @@ import { PageMeta } from '../components/PageMeta';
 import { projects } from '../data/projects';
 import NotFoundPage from './NotFoundPage';
 
-function screenshot(url: string, width = 1600) {
-  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=${width}`;
-}
-
 function ElectricianHeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
@@ -77,19 +73,26 @@ function DesktopProjectPreview({ url, title }: { url: string; title: string }) {
 
 function VaxjoCompare() {
   const [position, setPosition] = useState(50);
-  const before = useMemo(() => screenshot('https://www.vaxjoeltjanst.se'), []);
 
   return (
     <div className="case-compare">
       <div className="case-compare-stage">
-        <img src={before} alt="Växjö Eltjänst före redesign" loading="lazy" decoding="async" />
+        <img
+          src="/assets/vaxjo-before.webp"
+          alt="Växjö Eltjänst före redesign"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="750"
+        />
         <div className="case-compare-after" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
-          <iframe
-            src="https://vaxjo-eltjanst-view.vercel.app"
-            title="Växjö Eltjänst efter redesign, live-förhandsvisning"
+          <img
+            src="/assets/vaxjo-after.webp"
+            alt="Växjö Eltjänst efter redesign"
             loading="lazy"
-            allow="autoplay"
-            tabIndex={-1}
+            decoding="async"
+            width="1200"
+            height="750"
           />
         </div>
         <div className="case-compare-line" style={{ left: `${position}%` }}><span>↔</span></div>
@@ -182,13 +185,12 @@ export default function ProjectDetailPage() {
 
       {isRestaurant && (
         <section
-          className={`section section-white case-menu-boards${
-            project.slug === 'al-nahrayn-fisk'
+          className={`section section-white case-menu-boards${project.slug === 'al-nahrayn-fisk'
               ? ' case-menu-boards-alnahrayn'
               : project.slug === 'birria-seoul'
-              ? ' case-menu-boards-birria'
-              : ''
-          }`}
+                ? ' case-menu-boards-birria'
+                : ''
+            }`}
         >
           <div className="container">
             <div className="rabbit-section-heading">

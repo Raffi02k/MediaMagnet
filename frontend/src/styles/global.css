@@ -4629,6 +4629,7 @@ main {
 }
 
 @media(prefers-reduced-motion:reduce) {
+
   .principle-three article:hover,
   .founder-photo-wrap:hover,
   .founder-photo-wrap:hover img,

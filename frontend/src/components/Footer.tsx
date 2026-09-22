@@ -60,7 +60,7 @@ export function Footer() {
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
               }}
             >
-              <img className="brand-full-logo" src="/assets/logo_with_text_vit1.png" alt="MediaMagnet" />
+              <img className="brand-full-logo" src="/assets/logo_with_text_vit1.webp" alt="MediaMagnet" width="600" height="338" loading="lazy" decoding="async" />
             </Link>
             <p>Hemsidor och digital närvaro som gör det lättare för företag att bli hittade, förstådda och valda.</p>
           </div>

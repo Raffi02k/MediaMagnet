@@ -13,6 +13,7 @@ export type Project = {
   challenge: string;
   solution: string;
   deliverables: string[];
+  coverImage?: string;
   identity?: {
     headline: string;
     description: string;
@@ -35,6 +36,7 @@ export const projects: Project[] = [
     challenge: 'Birria Seoul är inte en traditionell mexikansk eller koreansk restaurang. På Stampgatan i Göteborg möts birria, tacos och quesabirria med koreanska smaker i ett eget streetfood-koncept. Hemsidan behövde förmedla just den personligheten: ung, energisk och nyfiken. Besökaren ska förstå vad som gör stället speciellt, inte bara mötas av ännu en restaurangmall.',
     solution: 'Jag tog fram en matdriven hemsida där stora matbilder, ett tydligt visuellt uttryck och en lättillgänglig meny får jobba tillsammans. Konceptet Korean × Mexican street food ger innehållet en röd tråd, medan galleri, kontakt och vägar vidare till beställning gör sidan användbar. På mobilen ska det vara lika enkelt att upptäcka maten som att planera ett besök.',
     deliverables: ['Personlig webbdesign med streetfood-känsla', 'Menystruktur och matbilder i fokus', 'Mobilanpassning och tydliga kontaktvägar', 'Digitala menyboards i samma uttryck'],
+    coverImage: '/assets/birria-cover.webp',
     identity: {
       headline: 'Seoul möter tacos. Inte en restaurangmall.',
       description: 'För Birria Seoul vill jag fånga känslan av nästa generations streetfood-ställe: högljutt i uttrycket, lekfullt i mötet mellan smaker och helt fokuserat på maten. Det ska kännas som deras ställe, redan på skärmen.',
@@ -71,6 +73,7 @@ export const projects: Project[] = [
     challenge: 'Al-Nahrayn ska inte försvinna bland allmänna fiskrestauranger i Göteborg. Det särskilda ligger i den irakiska fisktraditionen och masgouf, där maten och tillagningen över eld bär en egen berättelse. Utmaningen är att låta den identiteten ta plats i en modern hemsida, utan att uttrycket blir opersonligt eller att kulturen reduceras till dekoration.',
     solution: 'Jag byggde en mörk, matdriven hemsida med stora bilder av fisken och elden, varma guldaccenter och en uttrycksfull seriftypografi. Restaurangnamnet på svenska och arabiska får synas i presentationen, medan tydliga vägar till meny, galleri och kontakt gör sidan enkel att använda. Jag tog också fram digitala menyboards, så att restaurangens uttryck fortsätter från hemsidan till skärmarna i lokalen.',
     deliverables: ['Personlig webbdesign med irakisk identitet', 'Masgouf och tillagningen i bildfokus', 'Digitala menyboards i samma uttryck', 'Mobilanpassning, meny och kontaktvägar'],
+    coverImage: '/assets/alnahrayn-cover.webp',
     identity: {
       headline: 'Irakiska rötter. Ett modernt uttryck.',
       description: 'För Al-Nahrayn vill jag låta traditionen vara själva utgångspunkten, inte något som läggs ovanpå en färdig mall. Fisken, elden och restaurangens eget namn bygger känslan. Den moderna formen hjälper berättelsen att nå fram utan att ta över den.',
@@ -107,6 +110,7 @@ export const projects: Project[] = [
     challenge: 'Den befintliga webbplatsen presenterar framför allt företagsuppgifter och kontaktvägar till Mathias Sandström och Marcus Svensson. Det ger en konkret grund, men lämnar lite utrymme för att presentera företaget. Min uppgift i redesignen är att ge Växjö Eltjänst en tydligare digital identitet utan att tappa det personliga: ett lokalt elföretag med namngivna personer att kontakta.',
     solution: 'Jag tog fram en redesign med tydligare innehållshierarki, utrymme för tjänsteinformation och korta vägar till kontakt. Jag vill att besökaren snabbt ska förstå vilket företag det är, var det finns och hur man tar nästa steg. Det visuella uttrycket är mer återhållsamt än i ett restaurangprojekt: struktur och läsbarhet får bära känslan av ordning, medan den direkta kontakten gör sidan personlig.',
     deliverables: ['Redesign med en egen visuell riktning', 'Tydlig struktur för företag och tjänster', 'Personliga kontaktvägar och mobilfokus', 'Lokal förankring i innehållet'],
+    coverImage: '/assets/vaxjo-after.webp',
     identity: {
       headline: 'Lokalt förankrat. Personligt på riktigt.',
       description: 'Växjö Eltjänst behöver inte låta som en stor, anonym kedja. Jag vill lyfta ett företag där det finns riktiga namn bakom kontakten och en tydlig hemvist i Växjö. Personligheten ligger i det raka, tillgängliga och mänskliga.',
@@ -143,6 +147,7 @@ export const projects: Project[] = [
     challenge: 'Penselverket arbetar med allt från invändig målning och tapetsering till fasader och renoveringsmålning. Utmaningen är att göra bredden lätt att förstå utan att hemsidan blir en opersonlig lista över tjänster. Företagets fokus på noggrant arbete och tydlig kommunikation behöver märkas redan i det första intrycket, oavsett om besökaren vill måla om ett rum eller planera ett större projekt.',
     solution: 'Jag byggde en hemsida med separata tjänstesidor, plats för projekt och ett tydligt offertflöde. En varm, ljus färggrund och dämpade blå accenter ger innehållet lugn, medan bilder av fasader och detaljer lyfter själva hantverket. Strukturen hjälper privatpersoner, företag och fastighetsägare att hitta rätt, med Uddevalla som tydlig lokal utgångspunkt.',
     deliverables: ['Personlig webbdesign med hantverket i fokus', 'Tjänstesidor för olika måleribehov', 'Projektpresentation och tydligt offertflöde', 'Mobilanpassning och lokal struktur'],
+    coverImage: '/assets/penselverket-cover.webp',
     identity: {
       headline: 'Omsorg om ytan. Personlighet i varje detalj.',
       description: 'För Penselverket vill jag förmedla känslan av ett genomtänkt hantverk, inte bara ett nymålat resultat. Hemsidan ska kännas varm, noggrann och lätt att ta till sig, med samma omsorg i presentationen som företaget vill lägga i måleriarbetet.',
