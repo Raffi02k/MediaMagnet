@@ -5002,7 +5002,7 @@ main {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url('/assets/Birria-Seoul-menu.png') center / cover no-repeat;
+  background: url('/assets/Birria-Seoul-menu.webp') center / cover no-repeat;
   animation: case-hero-zoom 18s ease-in-out infinite alternate;
   pointer-events: none
 }
@@ -5039,13 +5039,13 @@ main {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url('/assets/penselverket-hero.png') center / cover no-repeat;
+  background: url('/assets/penselverket-hero.webp') center / cover no-repeat;
   animation: case-hero-zoom 18s ease-in-out infinite alternate;
   pointer-events: none
 }
 
 .case-hero-alnahrayn::before {
-  background-image: url('/assets/Alnahrayn-hero.png')
+  background-image: url('/assets/Alnahrayn-hero.webp')
 }
 
 .case-hero-alnahrayn::after {
@@ -5785,14 +5785,14 @@ main {
   color: #f2eadc;
   background:
     linear-gradient(180deg, #17120d 0%, rgba(23, 18, 13, .82) 20%, rgba(23, 18, 13, .94) 100%),
-    url('/assets/menu-nahrayn-mockup.png') center / cover no-repeat
+    url('/assets/menu-nahrayn-mockup.webp') center / cover no-repeat
 }
 
 .case-menu-boards-birria {
   color: #f5edd7;
   background:
     linear-gradient(180deg, #11110f 0%, rgba(17, 17, 15, .82) 20%, rgba(17, 17, 15, .94) 100%),
-    url('/assets/Birria-Seoul-menu.png') center / cover no-repeat
+    url('/assets/Birria-Seoul-menu.webp') center / cover no-repeat
 }
 
 .case-menu-boards-alnahrayn .rabbit-section-heading,

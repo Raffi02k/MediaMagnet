@@ -43,12 +43,12 @@ export default function WorkPage() {
             <p>Utöver hemsidor kan jag skapa skärmmenyer som fortsätter samma visuella identitet inne i lokalen.</p>
           </div>
           <div className="menu-gallery">
-            <img src="/assets/menu-nahrayn-mockup.png" alt="AL Nahrayn menyboards i restaurangmiljö" className="menu-mockup-wide" />
-            <img src="/assets/menu-nahrayn-01.png" alt="AL Nahrayn menyboard 1" />
-            <img src="/assets/menu-nahrayn-02.png" alt="AL Nahrayn menyboard 2" />
-            <img src="/assets/Birria-Seoul-menu.png" alt="Birria Seoul menyboards i restaurangmiljö" className="menu-mockup-wide" />
-            <img src="/assets/menu-birria-new1.png" alt="Birria Seoul menyboard 1" />
-            <img src="/assets/menu-birria-new2.png" alt="Birria Seoul menyboard 2" />
+            <img src="/assets/menu-nahrayn-mockup.webp" alt="AL Nahrayn menyboards i restaurangmiljö" className="menu-mockup-wide" />
+            <img src="/assets/menu-nahrayn-01.webp" alt="AL Nahrayn menyboard 1" />
+            <img src="/assets/menu-nahrayn-02.webp" alt="AL Nahrayn menyboard 2" />
+            <img src="/assets/Birria-Seoul-menu.webp" alt="Birria Seoul menyboards i restaurangmiljö" className="menu-mockup-wide" />
+            <img src="/assets/menu-birria-new1.webp" alt="Birria Seoul menyboard 1" />
+            <img src="/assets/menu-birria-new2.webp" alt="Birria Seoul menyboard 2" />
           </div>
         </div>
       </section>

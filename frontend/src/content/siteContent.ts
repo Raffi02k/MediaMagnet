@@ -235,7 +235,7 @@ export const services = [
     title: 'Digitala menyboards',
     short: 'Visuella skärmar för restaurang, kiosk och butik som visar erbjudandet tydligt.',
     bullets: ['TV-format 16:9', 'Meny & priser', 'Kampanjer', 'Visuell mat- och produktpresentation'],
-    heroImage: '/assets/menu-nahrayn-mockup.png',
+    heroImage: '/assets/menu-nahrayn-mockup.webp',
     heroImageAlt: 'Digitala menyboards för restaurang och kiosk',
     seoTitle: 'Digitala menyboards',
     metaDescription: 'Design av digitala menyboards för restaurang, kiosk och butik i 16:9-format med tydliga priser, kampanjer och produktbilder.',
@@ -260,10 +260,10 @@ export const services = [
     showcaseTitle: 'Exempel där menyboards och matdriven design tar mer plats.',
     showcaseText: 'Här bör det synas projekt med skärmmaterial, menyupplägg och visuellt fokus på produkter, rätter och priser.',
     showcaseEntries: [
-      { kind: 'image', image: '/assets/menu-nahrayn-mockup.png', alt: 'AL Nahrayn menyboards i restaurangmiljö', label: 'Menyboard', title: 'AL Nahrayn i restaurangmiljö med tydlig layout för rätter och priser.' },
-      { kind: 'image', image: '/assets/menu-nahrayn-01.png', alt: 'AL Nahrayn menyboard', label: 'Menyboard', title: 'Mörk premium-känsla med tydlig hierarki i menyn.' },
-      { kind: 'image', image: '/assets/menu-birria-new1.png', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Färgstark board med fokus på produkter, bilder och snabb läsbarhet.' },
-      { kind: 'image', image: '/assets/menu-birria-new2.png', alt: 'Birria Seoul menyboard detalj', label: 'Menyboard', title: 'Ytterligare vy som visar kampanjer, priser och menystruktur.' }
+      { kind: 'image', image: '/assets/menu-nahrayn-mockup.webp', alt: 'AL Nahrayn menyboards i restaurangmiljö', label: 'Menyboard', title: 'AL Nahrayn i restaurangmiljö med tydlig layout för rätter och priser.' },
+      { kind: 'image', image: '/assets/menu-nahrayn-01.webp', alt: 'AL Nahrayn menyboard', label: 'Menyboard', title: 'Mörk premium-känsla med tydlig hierarki i menyn.' },
+      { kind: 'image', image: '/assets/menu-birria-new1.webp', alt: 'Birria Seoul menyboard', label: 'Menyboard', title: 'Färgstark board med fokus på produkter, bilder och snabb läsbarhet.' },
+      { kind: 'image', image: '/assets/menu-birria-new2.webp', alt: 'Birria Seoul menyboard detalj', label: 'Menyboard', title: 'Ytterligare vy som visar kampanjer, priser och menystruktur.' }
     ]
   },
   {

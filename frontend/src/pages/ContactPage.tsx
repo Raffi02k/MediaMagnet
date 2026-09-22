@@ -11,7 +11,7 @@ export default function ContactPage() {
       <PageMeta title="Kontakt" description="Boka ett första samtal med MediaMagnet om hemsida, redesign, Google, reviews eller digitala menyboards." />
       <section
         className="page-hero page-backdrop-hero contact-hero"
-        style={{ '--page-hero-image': 'url(/assets/om-hero-new.png)' } as CSSProperties}
+        style={{ '--page-hero-image': 'url(/assets/om-hero-new.webp)' } as CSSProperties}
       >
         <div className="container page-hero-shell">
           <div className="page-hero-copy">

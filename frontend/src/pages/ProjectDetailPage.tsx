@@ -198,13 +198,13 @@ export default function ProjectDetailPage() {
             <div className="case-menu-grid">
               {project.slug === 'birria-seoul' ? (
                 <>
-                  <img src="/assets/menu-birria-new1.png" alt="Birria Seoul digital menyboard" />
-                  <img src="/assets/menu-birria-new2.png" alt="Birria Seoul digital menyboard" />
+                  <img src="/assets/menu-birria-new1.webp" alt="Birria Seoul digital menyboard" />
+                  <img src="/assets/menu-birria-new2.webp" alt="Birria Seoul digital menyboard" />
                 </>
               ) : (
                 <>
-                  <img src="/assets/menu-nahrayn-01.png" alt="AL Nahrayn digital menyboard" />
-                  <img src="/assets/menu-nahrayn-02.png" alt="AL Nahrayn digital menyboard" />
+                  <img src="/assets/menu-nahrayn-01.webp" alt="AL Nahrayn digital menyboard" />
+                  <img src="/assets/menu-nahrayn-02.webp" alt="AL Nahrayn digital menyboard" />
                 </>
               )}
             </div>

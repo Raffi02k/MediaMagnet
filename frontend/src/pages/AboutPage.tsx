@@ -9,7 +9,7 @@ export default function AboutPage() {
       <PageMeta title="Om MediaMagnet" description="MediaMagnet drivs av Raffi, systemutvecklare i Trollhättan med fokus på hemsidor och digital tillväxt för företag." />
       <section
         className="page-hero page-backdrop-hero about-page-hero"
-        style={{ '--page-hero-image': 'url(/assets/om-hero-new.png)' } as CSSProperties}
+        style={{ '--page-hero-image': 'url(/assets/om-hero-new.webp)' } as CSSProperties}
       >
         <div className="container page-hero-shell">
           <div className="page-hero-copy">

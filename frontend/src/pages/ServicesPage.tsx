@@ -71,8 +71,8 @@ export default function ServicesPage() {
             <Link className="button button-dark" to="/work">Se exempel ↗</Link>
           </div>
           <div className="screen-stack">
-            <img src="/assets/menu-birria-new1.png" alt="Birria Seoul digital menyboard" />
-            <img src="/assets/menu-nahrayn-01.png" alt="AL Nahrayn digital menyboard" />
+            <img src="/assets/menu-birria-new1.webp" alt="Birria Seoul digital menyboard" />
+            <img src="/assets/menu-nahrayn-01.webp" alt="AL Nahrayn digital menyboard" />
           </div>
         </div>
       </section>
